@@ -1,5 +1,9 @@
+require "AnAL"
+require "spriteSheet"
+
 Hero = 
 {
+    --__index = Hero,
     x = 0,
     y = 0,
     desX = 0,
@@ -12,7 +16,7 @@ Hero =
     health = 100,
     maxMana = 100,
     mana = 100,
-    image
+    sprite = SpriteSheet.create()
 }
 
 Hero.__index = Hero
