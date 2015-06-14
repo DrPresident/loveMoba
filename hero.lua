@@ -2,38 +2,49 @@ Hero =
 {
     x = 0,
     y = 0,
-    speed = 50,
+    desX = 0,
+    desY = 0,
+    speed = 200,
     attack = 100,
     resistance = 100,
     scale = 1,
-    __index = Hero,
     maxHealth = 100,
     health = 100,
     maxMana = 100,
-    mana = 100
+    mana = 100,
+    image
 }
 
-function Hero:create(path)
+Hero.__index = Hero
+
+function Hero:create()
     local hero = {}
     setmetatable(hero, Hero)
-    hero.image = love.graphics.newImage(path)
     return hero
 end
 
-function Hero:move(desX, desY, dt)
-    if self.x < desX then
-        self.x = self.x - (self.speed * dt)
-    end
-    
-    if self.x > desX then
+function Hero:move(dt)
+    if self.x < self.desX then
         self.x = self.x + (self.speed * dt)
     end
     
-    if self.y < desY then
-        self.y = self.y - (self.speed * dt)
+    if self.x > self.desX then
+        self.x = self.x - (self.speed * dt)
     end
     
-    if self.y > desY then
+    if self.y < self.desY then
         self.y = self.y + (self.speed * dt)
     end
+    
+    if self.y > self.desY then
+        self.y = self.y - (self.speed * dt)
+    end
+end
+
+function Hero:calcX()
+    return self.x + image:getWidth()
+end
+
+function Hero:calcY()
+    return self.y + image.getHeight()
 end

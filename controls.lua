@@ -7,9 +7,8 @@ rightclick =
 
 function love.mousepressed(x, y, button)
     if button == "r" then
-        rightclick.clicked = true
-        rightclick.x = x
-        rightclick.y = y
+        testHero.desX = x
+        testHero.desY = y
     end
 end
 
@@ -18,7 +17,9 @@ function love.mousereleased(x, y, button)
 end
 
 function love.keypressed(key)
-
+    if key == "escape" then
+        love.event.quit()
+    end
 end
 
 function love.keyreleased(key)
