@@ -1,6 +1,7 @@
 require "AnAL"
 require "spriteSheet"
 require "math"
+require "camera"
 
 Hero =
 {
@@ -17,7 +18,8 @@ Hero =
     health = 100,
     maxMana = 100,
     mana = 100,
-    sprite = SpriteSheet.create()
+    sprite = SpriteSheet.create(),
+    camera = Camera.create()
 }
 
 Hero.__index = Hero
