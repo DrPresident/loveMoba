@@ -7,12 +7,10 @@ function love.load()
 
     --Map Setup
     grassback = love.graphics.newImage("res/grass_back.png")
-    
+
     --Startup Values
     paused = false
-    
+
     testHero = Hero.create()
-    --testHero.sprite = love.graphics.newImage("res/test.png")
-    testHero.sprite.loadSprite("res/gunman_ss.jpg")   
-    
+    testHero.sprite:loadSprite("res/gunman_ss.jpg", 2, 5, .1, 7)
 end

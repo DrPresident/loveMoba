@@ -1,7 +1,8 @@
 require "AnAL"
 require "spriteSheet"
+require "math"
 
-Hero = 
+Hero =
 {
     --__index = Hero,
     x = 0,
@@ -28,27 +29,37 @@ function Hero:create()
 end
 
 function Hero:move(dt)
-    if self.x < self.desX then
-        self.x = self.x + (self.speed * dt)
-    end
-    
-    if self.x > self.desX then
-        self.x = self.x - (self.speed * dt)
-    end
-    
-    if self.y < self.desY then
-        self.y = self.y + (self.speed * dt)
-    end
-    
-    if self.y > self.desY then
-        self.y = self.y - (self.speed * dt)
+    if (self:calcX() < self.desX + .5 and self:calcX() > self.desX - .5)
+        or (self:calcY() < self.desY + .5 and self:calcY() > self.desY - .5)
+        then
+
+        self.sprite.anim:stop()
+        self.sprite.anim:seek(7)
+    else
+        if self:calcX() < self.desX then
+            self.x = self.x + (self.speed * dt)
+            self.sprite.anim:play()
+
+        elseif self:calcX() > self.desX then
+            self.x = self.x - (self.speed * dt)
+            self.sprite.anim:play()
+        end
+
+        if self:calcY() < self.desY then
+            self.y = self.y + (self.speed * dt)
+            self.sprite.anim:play()
+
+        elseif self:calcY() > self.desY then
+            self.y = self.y - (self.speed * dt)
+            self.sprite.anim:play()
+        end
     end
 end
 
 function Hero:calcX()
-    return self.x + image:getWidth()
+    return self.x + math.floor(self.sprite.image:getWidth() / 2)
 end
 
 function Hero:calcY()
-    return self.y + image.getHeight()
+    return self.y + math.floor(self.sprite.image:getHeight() / 2)
 end

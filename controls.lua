@@ -1,4 +1,4 @@
-rightclick = 
+rightclick =
 {
     clicked = false,
     x = 0,

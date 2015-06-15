@@ -1,8 +1,12 @@
 require "controls"
 require "load"
 
-function love.update(dx)
+function love.update(dt)
 
-    testHero:move(dx)
+    --Move Objects
+    testHero:move(dt)
+
+    --Update Animations
+    testHero.sprite.anim:update(dt)
 
 end
