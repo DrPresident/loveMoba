@@ -29,10 +29,9 @@ function Hero:create()
 end
 
 function Hero:move(dt)
-    if (self:calcX() < self.desX + .5 and self:calcX() > self.desX - .5)
-        or (self:calcY() < self.desY + .5 and self:calcY() > self.desY - .5)
+    if self:calcX() ~= self.desX
+        or self:calcY() ~= self.desY
         then
-
         self.sprite.anim:stop()
         self.sprite.anim:seek(7)
     else
@@ -57,9 +56,9 @@ function Hero:move(dt)
 end
 
 function Hero:calcX()
-    return self.x + math.floor(self.sprite.image:getWidth() / 2)
+    return self.x + math.floor(self.sprite.width / 2)
 end
 
 function Hero:calcY()
-    return self.y + math.floor(self.sprite.image:getHeight() / 2)
+    return self.y + math.floor(self.sprite.height / 2)
 end
