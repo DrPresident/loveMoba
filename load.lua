@@ -3,7 +3,8 @@ require "hero"
 function love.load()
 
     --Window Setup
-    --love.window.setFullscreen(true)
+    love.window.setMode(1080, 900,{})
+    love.window.setFullscreen(true)
 
     --Map Setup
     grassback = love.graphics.newImage("res/grass_back.png")

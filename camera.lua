@@ -3,7 +3,8 @@ Camera =
     x = 0,
     y = 0,
     scale = 1,
-    sensitivity = 1
+    sensitivity = 10,
+    edgeMargin = 50
 }
 
 Camera.__index  = Camera
@@ -46,15 +47,17 @@ function Camera:update()
     dx = 0
     dy = 0
 
-    if love.mouse.getX() > love.graphics.getWidth() - 10 then
-        dx = dx + (1 * sensitivity)
-    elseif love.mouse.getX() < 10 then
-        dx = dx - (1 * sensitivity)
+    if love.mouse.getX() > love.graphics.getWidth() - self.edgeMargin then
+        dx = dx + (1 * self.sensitivity)
+    elseif love.mouse.getX() < self.edgeMargin then
+        dx = dx - (1 * self.sensitivity)
     end
 
-    if love.mouse.getY() > love.graphics.getHeight() - 10 then
-        dy = dy + (1 * sensitivity)
-    elseif love.mouse.getY() < 10 then
-        dy = dy - (1 * sensitivity)
+    if love.mouse.getY() > love.graphics.getHeight() - self.edgeMargin then
+        dy = dy + (1 * self.sensitivity)
+    elseif love.mouse.getY() < self.edgeMargin then
+        dy = dy - (1 * self.sensitivity)
     end
+
+    self:move(dx, dy)
 end
