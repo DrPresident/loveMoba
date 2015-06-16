@@ -17,9 +17,9 @@ function Object:create()
 end
 
 function Object:X()
-    return math.floor(self.x + self.sprite.width / 2)
+    return self.x + (self.sprite.width / 2)
 end
 
 function Object:Y()
-    return math.floor(self.y + self.sprite.height / 2)
+    return self.y + (self.sprite.height / 2)
 end

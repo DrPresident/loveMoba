@@ -47,15 +47,19 @@ function Camera:update()
     dx = 0
     dy = 0
 
-    if love.mouse.getX() > love.graphics.getWidth() - self.edgeMargin then
+    if love.mouse.getX() > love.graphics.getWidth() - self.edgeMargin and
+        self.x <= 10780 then
         dx = dx + (1 * self.sensitivity)
-    elseif love.mouse.getX() < self.edgeMargin then
+    elseif love.mouse.getX() < self.edgeMargin and
+        self.x >= 20 then
         dx = dx - (1 * self.sensitivity)
     end
 
-    if love.mouse.getY() > love.graphics.getHeight() - self.edgeMargin then
+    if love.mouse.getY() > love.graphics.getHeight() - self.edgeMargin and
+        self.y <= 8980 then
         dy = dy + (1 * self.sensitivity)
-    elseif love.mouse.getY() < self.edgeMargin then
+    elseif love.mouse.getY() < self.edgeMargin and
+        self.y >= 20 then
         dy = dy - (1 * self.sensitivity)
     end
 
