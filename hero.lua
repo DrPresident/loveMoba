@@ -29,8 +29,8 @@ function Hero:create()
 end
 
 function Hero:move(dt)
-    if math.floor(self:X()) == self.desX
-        and math.floor(self:Y()) == self.desY
+    if ((self:X() > self.desX - 2) and (self:X() < self.desX + 2))
+        and ((self:Y() > self.desY - 2) and (self:Y() < self.desY + 2))
         then
         self.sprite.anim:stop()
         self.sprite.anim:seek(7)
