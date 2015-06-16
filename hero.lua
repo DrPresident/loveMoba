@@ -2,12 +2,10 @@ require "AnAL"
 require "spriteSheet"
 require "math"
 require "camera"
+require "object"
 
 Hero =
 {
-    --__index = Hero,
-    x = 0,
-    y = 0,
     desX = 0,
     desY = 0,
     speed = 200,
@@ -18,7 +16,6 @@ Hero =
     health = 100,
     maxMana = 100,
     mana = 100,
-    sprite = SpriteSheet.create(),
     camera = Camera.create()
 }
 
@@ -26,41 +23,44 @@ Hero.__index = Hero
 
 function Hero:create()
     local hero = {}
+    setmetatable(Hero, Object)
     setmetatable(hero, Hero)
     return hero
 end
 
 function Hero:move(dt)
-    if self:calcX() ~= self.desX
-        or self:calcY() ~= self.desY
+    if math.floor(self:X()) == self.desX
+        and math.floor(self:Y()) == self.desY
         then
         self.sprite.anim:stop()
         self.sprite.anim:seek(7)
     else
-        if self:calcX() < self.desX then
+        if self:X() < self.desX then
             self.x = self.x + (self.speed * dt)
             self.sprite.anim:play()
 
-        elseif self:calcX() > self.desX then
+        elseif self:X() > self.desX then
             self.x = self.x - (self.speed * dt)
             self.sprite.anim:play()
         end
 
-        if self:calcY() < self.desY then
+        if self:Y() < self.desY then
             self.y = self.y + (self.speed * dt)
             self.sprite.anim:play()
 
-        elseif self:calcY() > self.desY then
+        elseif self:Y() > self.desY then
             self.y = self.y - (self.speed * dt)
             self.sprite.anim:play()
         end
     end
 end
 
-function Hero:calcX()
-    return self.x + math.floor(self.sprite.width / 2)
+--[[
+function Hero:X()
+    return math.floor(self.x + self.sprite.width / 2)
 end
 
-function Hero:calcY()
-    return self.y + math.floor(self.sprite.height / 2)
+function Hero:Y()
+    return math.floor(self.y + self.sprite.height / 2)
 end
+]]--

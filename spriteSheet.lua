@@ -15,15 +15,14 @@ function SpriteSheet:create()
     local spriteSheet = {}
     setmetatable(spriteSheet, SpriteSheet)
     return spriteSheet
-
 end
 
 function SpriteSheet:loadSprite(path, rows, columns, delay, frames)--, rows, columns)
 
     self.image = love.graphics.newImage(path or "res/fail.png")
 
-    self.width = self.image:getWidth() / columns
-    self.height = self.image:getHeight() / rows
+    self.width = self.image:getWidth() / (columns or 1)
+    self.height = self.image:getHeight() / (rows or 1)
 
     self.anim = newAnimation(
                     self.image,
@@ -31,5 +30,6 @@ function SpriteSheet:loadSprite(path, rows, columns, delay, frames)--, rows, col
                     self.height,
                     delay or .1,
                     frames or 0)
+    return self
 
 end
