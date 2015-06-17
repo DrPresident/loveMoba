@@ -3,6 +3,8 @@ require "spriteSheet"
 require "math"
 require "camera"
 require "object"
+require "passive"
+require "spell"
 
 Hero =
 {
@@ -16,7 +18,12 @@ Hero =
     health = 100,
     maxMana = 100,
     mana = 100,
-    camera = Camera.create()
+    camera = Camera.create(),
+    readySpell,
+    passive,
+    spell1,
+    spell2,
+    spell3
 }
 
 Hero.__index = Hero
@@ -53,4 +60,24 @@ function Hero:move(dt)
             self.sprite.anim:play()
         end
     end
+end
+
+function Hero:update(dt)
+
+    Hero:move(dt)
+
+    if self.readySpell then
+
+    else
+
+    end
+
+end
+
+function Hero:cast(spellNum)
+
+end
+
+function Hero:spellReady(spellNum)
+
 end

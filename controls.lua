@@ -19,6 +19,15 @@ end
 function love.keypressed(key)
     if key == "escape" then
         love.event.quit()
+
+    elseif key == "q" then
+    testhero:spellReady(1)
+
+    elseif key == "w" then
+        testHero:spellReady(2)
+
+    elseif key == "e" then
+        testHero:spellReady(3)
     end
 end
 

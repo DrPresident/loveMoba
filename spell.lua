@@ -16,11 +16,11 @@ Spell =
 
 Spell.__index = Spell
 
-function Spell:create(type)
+function Spell:create(spellType)
     spell = {}
     setmetatable(Spell, Object)
     setmetatable(spell, Spell)
-    spell.
+    spell.type = spellType
     return spell
 end
 
