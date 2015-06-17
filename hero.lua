@@ -6,8 +6,8 @@ require "object"
 
 Hero =
 {
-    desX = 0,
-    desY = 0,
+    desX = 10,
+    desY = 10,
     speed = 200,
     attack = 100,
     resistance = 100,
@@ -54,13 +54,3 @@ function Hero:move(dt)
         end
     end
 end
-
---[[
-function Hero:X()
-    return math.floor(self.x + self.sprite.width / 2)
-end
-
-function Hero:Y()
-    return math.floor(self.y + self.sprite.height / 2)
-end
-]]--
