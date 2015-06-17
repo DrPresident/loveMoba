@@ -6,7 +6,7 @@ function love.draw ()
     mainHero.camera:set()
 
     --Draw Map
-    love.graphics.draw(grassback, 0, 0)
+    love.graphics.draw(map, 0, 0)
 
     --Draw Characters
     mainHero.sprite.anim:draw(mainHero.x, mainHero.y)

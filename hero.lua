@@ -22,14 +22,13 @@ Hero =
     readySpell,
     passive,
 
-    spells =
-    {
-        first,
-        second,
-        third,
-        ult
-    }
+    spells = {}
 }
+
+Hero.spells[1] = Spell.create(1)
+Hero.spells[2] = Spell.create(2)
+Hero.spells[3] = Spell.create(3)
+Hero.spells[4] = Spell.create(4)
 
 Hero.__index = Hero
 
@@ -41,37 +40,47 @@ function Hero:create()
 end
 
 function Hero:move(dt)
-    if (self.desX - self:X()) < 10 then
-        self.x = self.desX - (self:X() - self.x)
-    end
-    if (self.desY - self:Y()) < 10 then
-        self.y = self.desY - (self:Y() - self.y)
-    end
 
-        if ((self:X() > self.desX - 2) and (self:X() < self.desX + 2))
-            and ((self:Y() > self.desY - 2) and (self:Y() < self.desY + 2))
-            then
-            self.sprite.anim:stop()
-            self.sprite.anim:seek(7)
-        else
-            if self:X() < self.desX then
+    local snapRange = 15
+
+    if self:X() == self.desX and self:Y() == self.desY
+        then
+        self.sprite.anim:stop()
+        self.sprite.anim:seek(7)
+    else
+        if self:X() < self.desX then
+            if (self.desX - self:X()) < snapRange then
+                self.x = self.desX - (self:X() - self.x)
+            else
                 self.x = self.x + (self.speed * dt)
-                self.sprite.anim:play()
-
-            elseif self:X() > self.desX then
-                self.x = self.x - (self.speed * dt)
                 self.sprite.anim:play()
             end
 
-            if self:Y() < self.desY then
+        elseif self:X() > self.desX then
+            if (self.desX - self:X()) > snapRange then
+                self.x = self.desX - (self:X() - self.x)
+            else
+                self.x = self.x - (self.speed * dt)
+                self.sprite.anim:play()
+            end
+        end
+
+        if self:Y() < self.desY then
+            if (self.desY - self:Y()) < snapRange then
+                self.y = self.desY - (self:Y() - self.y)
+            else
                 self.y = self.y + (self.speed * dt)
                 self.sprite.anim:play()
-
-            elseif self:Y() > self.desY then
+            end
+        elseif self:Y() > self.desY then
+            if (self.desY - self:Y()) > snapRange then
+                self.y = self.desY - (self:Y() - self.y)
+            else
                 self.y = self.y - (self.speed * dt)
                 self.sprite.anim:play()
             end
         end
+    end
 
 end
 
@@ -79,18 +88,19 @@ function Hero:update(dt)
 
     Hero:move(dt)
 
-    if self.readySpell then
-
-    else
-
-    end
-
 end
 
-function Hero:cast(spellNum)
+function Hero:cast(mouseX, mouseY)
+
+
 
 end
 
 function Hero:spellReady(spellNum)
 
+    for i = 1, 4 do
+        self.spells[i].ready = false
+    end
+
+    self.spells[spellNum].ready = true
 end
