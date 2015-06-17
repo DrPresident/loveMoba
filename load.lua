@@ -12,7 +12,7 @@ function love.load()
     --Startup Values
     paused = false
 
-    testHero = Hero.create()
-    testHero.sprite:loadSprite("res/gunman_ss.jpg", 2, 5, .1, 7)
+    mainHero = Hero.create()
+    mainHero.sprite:loadSprite("res/gunman_ss.jpg", 2, 5, .1, 7)
 
 end

@@ -7,8 +7,8 @@ rightclick =
 
 function love.mousepressed(x, y, button)
     if button == "r" then
-        testHero.desX = x
-        testHero.desY = y
+        mainHero.desX = x + mainHero.camera.x
+        mainHero.desY = y + mainHero.camera.y
     end
 end
 
@@ -21,13 +21,13 @@ function love.keypressed(key)
         love.event.quit()
 
     elseif key == "q" then
-    testhero:spellReady(1)
+    mainHero:spellReady(1)
 
     elseif key == "w" then
-        testHero:spellReady(2)
+        mainHero:spellReady(2)
 
     elseif key == "e" then
-        testHero:spellReady(3)
+        mainHero:spellReady(3)
     end
 end
 

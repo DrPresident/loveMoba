@@ -4,12 +4,12 @@ require "load"
 function love.update(dt)
 
     --Move Objects
-    testHero:move(dt)
+    mainHero:move(dt)
 
     --Update Cameras
-    testHero.camera:update()
+    mainHero.camera:update()
 
     --Update Animations
-    testHero.sprite.anim:update(dt)
+    mainHero.sprite.anim:update(dt)
 
 end
