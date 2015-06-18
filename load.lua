@@ -1,4 +1,5 @@
 require "hero"
+require "orcus"
 
 function love.load(arg)
 
@@ -12,7 +13,5 @@ function love.load(arg)
     --Startup Values
     paused = false
 
-    setMainHero(Hero.create())
-    mainHero.sprite:loadSprite("res/gunman_ss.jpg", 2, 5, .1, 7)
-
+    mainHero = Orcus:create()
 end

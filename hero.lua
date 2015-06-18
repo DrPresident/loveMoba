@@ -10,7 +10,7 @@ Hero =
 {
     desX = 100,
     desY = 100,
-    speed = 800,
+    speed = 100,
     attack = 100,
     resistance = 100,
     scale = 1,
@@ -25,11 +25,6 @@ Hero =
     spells = {}
 }
 
-Hero.spells[1] = Spell.create(1)
-Hero.spells[2] = Spell.create(2)
-Hero.spells[3] = Spell.create(3)
-Hero.spells[4] = Spell.create(4)
-
 Hero.__index = Hero
 
 function Hero:create()
@@ -41,12 +36,12 @@ end
 
 function Hero:move(dt)
 
-    local snapRange = 15
+    local snapRange = 5
 
     if self:X() == self.desX and self:Y() == self.desY
         then
         self.sprite.anim:stop()
-        self.sprite.anim:seek(7)
+        self.sprite.anim:seek(1)
     else
         if self:X() < self.desX then
             if (self.desX - self:X()) < snapRange then

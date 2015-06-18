@@ -23,7 +23,7 @@ Spell.__index = Spell
 
 function Spell:create(spellType, spritePath, rows, columns, delay, frames, castFunction)
 
-    spell = {}
+    local spell = {}
     setmetatable(Spell, Object)
     setmetatable(spell, Spell)
     spell.type = spellType
@@ -53,7 +53,7 @@ function Spell:cast(arg1, arg2)
         self.desY = arg2
 
     elseif self.type == point then
-        
+
         self.desX = arg1
         self.desY = arg2
     end
