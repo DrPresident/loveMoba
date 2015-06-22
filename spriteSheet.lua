@@ -18,7 +18,7 @@ function SpriteSheet:create()
     return spriteSheet
 end
 
-function SpriteSheet:loadSprite(path, rows, columns, delay, frames)--, rows, columns)
+function SpriteSheet:loadSprite(path, rows, columns, delay, frames)
 
     self.image = love.graphics.newImage(path or "res/fail.png")
 
