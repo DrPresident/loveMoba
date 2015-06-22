@@ -16,10 +16,10 @@ function Orcus:create()
     setmetatable(Orcus, Hero)
     setmetatable(orcus, Orcus)
 
-    orcus.sprite:loadSprite("res/Orcus.png", 4, 3, .2, 3)
+    orcus.sprite:loadSprite("res/orcus.png", 4, 3, .2, 3)
 
-    orcus.spells[1] = Spell.create(2)
-    orcus.spells[2] = Spell.create()
+    orcus.spells[1] = Spell.create(3)
+    orcus.spells[2] = Spell.create(2)
 
     return orcus
 end
