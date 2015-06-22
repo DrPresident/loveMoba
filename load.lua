@@ -13,6 +13,6 @@ function love.load(arg)
     paused = false
 
     setMainHero(Hero.create())
-    mainHero.sprite:loadSprite("res/gunman_ss.jpg", 2, 5, .1, 7)
+    mainHero.sprite:loadSprite("res/Nija.png", 4, 3, .1, 3)
 
 end
