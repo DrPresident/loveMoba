@@ -14,13 +14,13 @@ function SpriteSheet:create()
 
     local spriteSheet = {}
     setmetatable(spriteSheet, SpriteSheet)
-    spriteSheet.image = love.graphics.newImage("res/fail.png")
+    --spriteSheet.image = love.graphics.newImage("res/fail.png")
     return spriteSheet
 end
 
 function SpriteSheet:loadSprite(path, rows, columns, delay, frames)
 
-    self.image = love.graphics.newImage(path or "res/fail.png")
+    self.image = love.graphics.newImage(path)-- or "res/fail.png")
 
     self.width = self.image:getWidth() / (columns or 1)
     self.height = self.image:getHeight() / (rows or 1)
