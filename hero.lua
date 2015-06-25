@@ -21,6 +21,10 @@ Hero =
     camera = Camera.create(),
     readySpell,
     passive,
+    frontSprite,
+    leftSprite,
+    rightSprite,
+    backSprite,
 
     spells = {}
 }
@@ -75,8 +79,22 @@ function Hero:move(dt)
                 self.sprite.anim:play()
             end
         end
-    end
 
+        if math.abs(self:X() - self.desX) > math.abs(self:Y() - self.desY) then
+            if (self:X() - self.desX) > 0 then
+                self.sprite = self.leftSprite
+            else
+                self.sprite = self.rightSprite
+            end
+        elseif math.abs(self:X() - self.desX) < math.abs(self:Y() - self.desY) then
+            if(self:Y() - self.desY) > 0 then
+                self.sprite = self.backSprite
+            else
+                self.sprite = self.frontSprite
+            end
+        end
+
+    end
 end
 
 function Hero:update(dt)

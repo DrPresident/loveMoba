@@ -14,5 +14,4 @@ function love.load(arg)
     paused = false
 
     mainHero = Orcus:create()
-    mainHero.sprite:loadSprite("res/orcus.png", 4, 3,.2, 3)
 end

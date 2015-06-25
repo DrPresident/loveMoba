@@ -14,7 +14,7 @@ function SpriteSheet:create()
 
     local spriteSheet = {}
     setmetatable(spriteSheet, SpriteSheet)
-    --spriteSheet.image = love.graphics.newImage("res/fail.png")
+    spriteSheet.image = love.graphics.newImage("res/fail.png")
     return spriteSheet
 end
 
