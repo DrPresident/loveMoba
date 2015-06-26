@@ -1,4 +1,4 @@
-require "AnAL"
+local anim8 = require 'anim8'
 
 SpriteSheet =
 {
@@ -14,23 +14,19 @@ function SpriteSheet:create()
 
     local spriteSheet = {}
     setmetatable(spriteSheet, SpriteSheet)
-    spriteSheet.image = love.graphics.newImage("res/fail.png")
     return spriteSheet
 end
 
-function SpriteSheet:loadSprite(path, rows, columns, delay, frames)
+function SpriteSheet:loadSprite(path, rows, columns, frames, delay)
 
-    self.image = love.graphics.newImage(path)-- or "res/fail.png")
+    self.image = love.graphics.newImage(path or "res/fail.png")
 
     self.width = self.image:getWidth() / (columns or 1)
     self.height = self.image:getHeight() / (rows or 1)
 
-    self.anim = newAnimation(
-                    self.image,
-                    self.width,
-                    self.height,
-                    delay or .1,
-                    frames or 0)
-    return self
+    local grid = anim8.newGrid(self.width, self.height, self.image:getWidth(), self.image:getWidth())
 
+    self.anim = newAnimation(grid(frames), delay)
+
+    return self
 end

@@ -4,7 +4,7 @@ require "load"
 function love.update(dt)
 
     --Move Objects
-    mainHero:move(dt)
+    mainHero:update(dt)
 
     --Update Cameras
     mainHero.camera:update()

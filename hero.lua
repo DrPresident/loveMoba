@@ -1,4 +1,4 @@
-require "AnAL"
+require "anim8"
 require "spriteSheet"
 require "math"
 require "camera"
@@ -21,10 +21,10 @@ Hero =
     camera = Camera.create(),
     readySpell,
     passive,
-    frontSprite,
-    leftSprite,
-    rightSprite,
-    backSprite,
+    frontAnim,
+    leftAnim,
+    rightAnim,
+    backAnim,
 
     spells = {}
 }
@@ -44,15 +44,15 @@ function Hero:move(dt)
 
     if self:X() == self.desX and self:Y() == self.desY
         then
-        self.sprite.anim:stop()
-        self.sprite.anim:seek(1)
+        --self.sprite.anim:stop()
+        --self.sprite.anim:seek(1)
     else
         if self:X() < self.desX then
             if (self.desX - self:X()) < snapRange then
                 self.x = self.desX - (self:X() - self.x)
             else
                 self.x = self.x + (self.speed * dt)
-                self.sprite.anim:play()
+                --self.sprite.anim:play()
             end
 
         elseif self:X() > self.desX then
@@ -60,7 +60,7 @@ function Hero:move(dt)
                 self.x = self.desX - (self:X() - self.x)
             else
                 self.x = self.x - (self.speed * dt)
-                self.sprite.anim:play()
+                --self.sprite.anim:play()
             end
         end
 
@@ -69,37 +69,36 @@ function Hero:move(dt)
                 self.y = self.desY - (self:Y() - self.y)
             else
                 self.y = self.y + (self.speed * dt)
-                self.sprite.anim:play()
+                ---self.sprite.anim:play()
             end
         elseif self:Y() > self.desY then
             if (self.desY - self:Y()) > snapRange then
                 self.y = self.desY - (self:Y() - self.y)
             else
                 self.y = self.y - (self.speed * dt)
-                self.sprite.anim:play()
+                --self.sprite.anim:play()
             end
         end
-
-        if math.abs(self:X() - self.desX) > math.abs(self:Y() - self.desY) then
-            if (self:X() - self.desX) > 0 then
-                self.sprite = self.leftSprite
-            else
-                self.sprite = self.rightSprite
-            end
-        elseif math.abs(self:X() - self.desX) < math.abs(self:Y() - self.desY) then
-            if(self:Y() - self.desY) > 0 then
-                self.sprite = self.backSprite
-            else
-                self.sprite = self.frontSprite
-            end
-        end
-
     end
 end
 
 function Hero:update(dt)
 
-    Hero:move(dt)
+    self:move(dt)
+
+    if math.abs(self:X() - self.desX) > math.abs(self:Y() - self.desY) then
+        if (self:X() - self.desX) > 0 then
+            --self.sprite = self.leftSprite
+        elseif (self:X() - self.desX) < 0 then
+            --self.sprite = self.rightSprite
+        end
+    elseif math.abs(self:X() - self.desX) < math.abs(self:Y() - self.desY) then
+        if (self:Y() - self.desY) > 0 then
+            --self.sprite = self.backSprite
+        elseif (self:Y() - self.desY) < 0 then
+            --self.sprite = self.frontSprite
+        end
+    end
 
 end
 

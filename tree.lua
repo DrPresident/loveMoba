@@ -5,7 +5,6 @@ Tree =
     total = 1,
     treesX = {},
     treesY = {},
-    sprite = SpriteSheet:loadSprite("res/tallTree.png")
 }
 
 Tree.__index = Tree
