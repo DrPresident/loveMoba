@@ -93,7 +93,7 @@ function Hero:loadSprite(path, delay)
     self.frontAnim = anim8.newAnimation(self.sprite.grid('1-3', 1), delay)
     self.leftAnim = anim8.newAnimation(self.sprite.grid('1-3', 2), delay)
     self.rightAnim = anim8.newAnimation(self.sprite.grid('1-3', 3), delay)
-    --self.backAnim = anim8.newAnimation(self.sprite.grid('1-3', 4), delay)
+    self.backAnim = anim8.newAnimation(self.sprite.grid(4, 1), delay)
 
 end
 
