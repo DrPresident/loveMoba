@@ -17,9 +17,9 @@ function Object:create()
 end
 
 function Object:X()
-    return self.x + (self.sprite.width / 2)
+    return self.x + (self.sprite.frameWidth / 2)
 end
 
 function Object:Y()
-    return self.y + (self.sprite.height / 2)
+    return self.y + (self.sprite.frameHeight / 2)
 end

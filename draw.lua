@@ -9,7 +9,7 @@ function love.draw ()
     love.graphics.draw(map, 0, 0)
 
     --Draw Characters
-    mainHero.sprite.anim:draw(mainHero.x, mainHero.y)
+    mainHero:anim():draw(mainHero.sprite.image, mainHero.x, mainHero.y)
 
     --Draw Trees
     --tree.sprite.anim:draw(0, 0)
@@ -19,6 +19,9 @@ function love.draw ()
 
 
     --Debug Info
+
+    --love version
+    love.graphics.print(string.format("Version %d.%d.%d - %s", love.getVersion()), love.graphics.getWidth() - 200, 0)
 
     --mouse
     love.graphics.print("MOUSE", love.graphics.getWidth() - 200, 10)

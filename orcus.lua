@@ -16,6 +16,8 @@ function Orcus:create()
     setmetatable(Orcus, Hero)
     setmetatable(orcus, Orcus)
 
+    orcus:loadSprite("res/orcus.png", .1)
+
     orcus.spells[1] = Spell.create(3)
     orcus.spells[2] = Spell.create(2)
 

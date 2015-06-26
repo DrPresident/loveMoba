@@ -10,6 +10,6 @@ function love.update(dt)
     mainHero.camera:update()
 
     --Update Animations
-    mainHero.sprite.anim:update(dt)
+    --mainHero.sprite.anim:update(dt)
 
 end

@@ -13,7 +13,7 @@ function Tree:create()
     tree = {}
     setmetatable(Tree, Object)
     setmetatable(tree, Tree)
-    tree.sprite:loadSprite("res/tallTree.png")
+    tree.sprite:loadSprite("res/tallTree.png", 1, 1, 1, .1)
     return tree
 end
 
