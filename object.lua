@@ -3,7 +3,7 @@ require "math"
 
 Object =
 {
-    sprite = SpriteSheet.create(),
+    sprite,-- = SpriteSheet.create(),
     x = 50,
     y = 50
 }

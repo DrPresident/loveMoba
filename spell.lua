@@ -27,9 +27,7 @@ function Spell:create(spellType, spritePath, rows, columns, delay, frames, castF
     setmetatable(Spell, Object)
     setmetatable(spell, Spell)
     spell.type = spellType
-    spell.sprite:loadSprite(spritePath or "res/fail.png",
-                            rows or 1, columns or 1,
-                            delay or .1, frames or 0)
+    spell.sprite = SpriteSheet:loadSprite(spritePath, .1)
     spell.castFunction = castFunction or default
 
     return spell
