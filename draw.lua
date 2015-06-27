@@ -12,7 +12,7 @@ function love.draw ()
     mainHero:anim():draw(mainHero.sprite.image, mainHero.x, mainHero.y)
 
     --Draw Trees
-    --tree.sprite.anim:draw(0, 0)
+    love.graphics.draw(tree.sprite.image, 0, 0)
 
     mainHero.camera:unset()
     --Draw GUI

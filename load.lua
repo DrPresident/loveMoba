@@ -1,5 +1,6 @@
 require "hero"
 require "orcus"
+require "nija"
 require "tree"
 
 function love.load(arg)
@@ -15,5 +16,5 @@ function love.load(arg)
     paused = false
 
     tree = Tree:create()
-    mainHero = Orcus:create()
+    mainHero = Nija:create()
 end

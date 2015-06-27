@@ -16,19 +16,26 @@ Spell =
     desX,
     desY,
     ready,
-    castFunction
+    castFunction,
+    frontAnim,
+    leftAnim,
+    rightAnim,
+    backAnim,
+    anim
 }
 
 Spell.__index = Spell
 
-function Spell:create(spellType, spritePath, rows, columns, delay, frames, castFunction)
+function Spell:create(spellType, castFunc, spritePath, rows, columns, delay)
 
     local spell = {}
     setmetatable(Spell, Object)
     setmetatable(spell, Spell)
     spell.type = spellType
+
     spell.sprite = SpriteSheet:loadSprite(spritePath, .1)
-    spell.castFunction = castFunction or default
+
+    spell.castFunction = castFunc or default
 
     return spell
 end
@@ -55,6 +62,8 @@ function Spell:cast(arg1, arg2)
         self.desX = arg1
         self.desY = arg2
     end
+
+    castFunction()
 end
 
 local function default()

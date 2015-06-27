@@ -27,7 +27,5 @@ function SpriteSheet:loadSprite(path, rows, columns, frames, delay)
 
     self.grid = anim8.newGrid(self.frameWidth, self.frameHeight, self.image:getWidth(), self.image:getWidth())
 
-    --self.anim = anim8.newAnimation(self:grid(frames), delay)
-
     return self
 end
