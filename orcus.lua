@@ -20,7 +20,7 @@ function Orcus:create()
     orcus:loadSprite("res/orcus.png", .1)
 
     --Fireball Setup
-    orcus.spells[1] = Spell.create(3, orcus.fireBall, "res/orcusFireBall.png", 4, 3, .1)
+    orcus.spells[1] = Spell:create(point, orcus.fireBall, "res/orcusFireBall.png", 4, 3, .1)
     orcus.spells[1].frontAnim = anim8.newAnimation(
         orcus.spells[1].sprite.grid('1-3', 1), .1)
     orcus.spells[1].leftAnim = anim8.newAnimation(
@@ -29,9 +29,6 @@ function Orcus:create()
         orcus.spells[1].sprite.grid('1-3', 3), .1)
     orcus.spells[1].backAnim = anim8.newAnimation(
         orcus.spells[1].sprite.grid('1-3', 4), .1)
-
-
-    orcus.spells[2] = Spell.create(2)
 
     return orcus
 end

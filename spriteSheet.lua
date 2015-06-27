@@ -11,21 +11,19 @@ SpriteSheet =
 
 SpriteSheet.__index = SpriteSheet
 
-function SpriteSheet:create()
+function SpriteSheet:loadSprite(path, rows, columns, delay)
 
-    local spriteSheet = {}
-    setmetatable(spriteSheet, SpriteSheet)
-    return spriteSheet
-end
+    local sprite = {}
 
-function SpriteSheet:loadSprite(path, rows, columns, frames, delay)
+    setmetatable(sprite, SpriteSheet)
 
-    self.image = love.graphics.newImage(path or "res/fail.png")
+    sprite.image = love.graphics.newImage(path)
 
-    self.frameWidth = self.image:getWidth() / (columns or 1)
-    self.frameHeight = self.image:getHeight() / (rows or 1)
+    sprite.frameWidth = math.floor(sprite.image:getWidth() / columns)
+    sprite.frameHeight = math.floor(sprite.image:getHeight() / rows)
 
-    self.grid = anim8.newGrid(self.frameWidth, self.frameHeight, self.image:getWidth(), self.image:getWidth())
+    sprite.grid = anim8.newGrid(sprite.frameWidth, sprite.frameHeight,
+                            sprite.image:getWidth(), sprite.image:getHeight())
 
-    return self
+    return sprite
 end

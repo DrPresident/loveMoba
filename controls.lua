@@ -11,16 +11,13 @@ function love.mousepressed(x, y, button)
         mainHero.desY = y + mainHero.camera.y
     elseif button == "l" then
 
-        local i = 1
-        local found = false
-
-        while i <= 4 and not found do
-            if mainHero.spells[i].ready then
-
-                found = true
-                mainHero.cast()
+        for i = 1, 4 do
+            if mainHero.spells[i] ~= nil then
+                if mainHero.spells[i].ready then
+                    mainHero:cast()
+                    break
+                end
             end
-            i = i + 1
         end
     end
 end

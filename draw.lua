@@ -11,11 +11,29 @@ function love.draw ()
     --Draw Characters
     mainHero:anim():draw(mainHero.sprite.image, mainHero.x, mainHero.y)
 
+
+    --Draw Spells
+    for i = 1, 4 do
+        if mainHero.spells[i] == nil then break
+        else
+            if mainHero.spells[i].active then
+                mainhero.spells[i]:anim():draw(
+                    mainHero.spells[i].sprite.image,
+                    mainHero.spells[i].x,
+                    mainHero.spells[i].y)
+            end
+        end
+    end
+
     --Draw Trees
     love.graphics.draw(tree.sprite.image, 0, 0)
 
     mainHero.camera:unset()
+
+
+
     --Draw GUI
+
 
 
     --Debug Info
