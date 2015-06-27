@@ -1,5 +1,7 @@
 require "hero"
 require "orcus"
+require "nija"
+require "tree"
 
 function love.load(arg)
 
@@ -13,5 +15,6 @@ function love.load(arg)
     --Startup Values
     paused = false
 
-    mainHero = Orcus:create()
+    tree = Tree:create()
+    mainHero = Nija:create()
 end
