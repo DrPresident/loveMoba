@@ -8,8 +8,6 @@ require "spell"
 
 Hero =
 {
-    desX = 100,
-    desY = 100,
     speed = 100,
     attack = 100,
     resistance = 100,
@@ -133,11 +131,14 @@ end
 function Hero:cast(mouseX, mouseY)
 
     for i = 1,4 do
-        if spells[i] == nil then break
+        if self.spells[i] == nil then break
         else
-            if spells[i].ready then
-                spells[i].active = true
-                spells[i].ready = false
+            if self.spells[i].ready then
+                self.spells[i].active = true
+                self.spells[i].ready = false
+                self.spells[i].x = self.x
+                self.spells[i].y = self.y
+                self.spells[i]:cast(mouseX, mouseY)
                 break
             end
         end
@@ -152,7 +153,7 @@ function Hero:spellReady(spellNum)
         end
 
     end
-    if self.spells[i] ~= nil then
+    if self.spells[spellNum] ~= nil then
         self.spells[spellNum].ready = true
     end
 end

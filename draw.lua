@@ -17,7 +17,7 @@ function love.draw ()
         if mainHero.spells[i] == nil then break
         else
             if mainHero.spells[i].active then
-                mainhero.spells[i]:anim():draw(
+                mainHero.spells[i]:anim():draw(
                     mainHero.spells[i].sprite.image,
                     mainHero.spells[i].x,
                     mainHero.spells[i].y)
@@ -38,6 +38,14 @@ function love.draw ()
 
     --Debug Info
 
+    local spellActiveString = "active"
+    local spellReadyString = "ready"
+
+    for i = 1, 1 do
+        spellReadyString = spellReadyString .. " - " .. tostring(mainHero.spells[i].ready)
+        spellActiveString = spellActiveString .. " - " .. tostring(mainHero.spells[i].active)
+    end
+
     --love version
     love.graphics.print(string.format("Version %d.%d.%d - %s", love.getVersion()), love.graphics.getWidth() - 200, 0)
 
@@ -53,5 +61,10 @@ function love.draw ()
     love.graphics.print("HERO LOCATION", love.graphics.getWidth() - 200, 80)
     love.graphics.print(tostring(mainHero.desY), love.graphics.getWidth() - 200, 90)
     love.graphics.print(tostring(mainHero.desY), love.graphics.getWidth() - 200, 100)
+
+    --spells
+    love.graphics.print("spells - Q - W - E - R", love.graphics.getWidth() - 200, 110)
+    love.graphics.print(spellReadyString, love.graphics.getWidth() - 200, 120)
+    love.graphics.print(spellActiveString, love.graphics.getWidth() - 200, 130)
 
 end

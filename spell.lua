@@ -12,13 +12,10 @@ Spell =
     type,
     radius,
     duration,
-    speed,
     activeTimer,
     distance,
     cdTimer,
     cooldown,
-    desX,
-    desY,
     ready,
     active,
     castFunction,
@@ -34,8 +31,10 @@ Spell.__index = Spell
 function Spell:create(spellType, castFunc, spritePath, rows, columns, delay)
 
     local spell = {}
+
     setmetatable(Spell, Object)
     setmetatable(spell, Spell)
+
     spell.type = spellType
 
     spell.sprite = SpriteSheet:loadSprite(spritePath, rows, columns, delay)
@@ -68,7 +67,10 @@ function Spell:cast(arg1, arg2)
         self.desY = arg2
     end
 
-    castFunction()
+    self.active = true
+    self.ready = false
+    self.activeTimer = 0
+    self.castFunction()
 end
 
 function Spell:update(dt)
@@ -81,15 +83,58 @@ function Spell:update(dt)
         elseif self.type == target then
 
         elseif self.type == point then
+
             if self.activeTimer < self.duration then
-                self.activeTime = self.activeTime + dt
-                self.x = self.x + (speed * dt)
-                self.y = self.y + (speed * dt)
+
+                self.activeTimer = self.activeTimer + dt
+                self:move(desX, desY, dt)
 
             else
                 self.active = false
-                self.activeTimer = 0
             end
+
+--[[
+                local snapRange = 5
+
+                if self:X() == self.desX and self:Y() == self.desY
+                    then
+                    self:anim():pauseAtStart()
+                else
+                    if self:X() < self.desX then
+                        if (self.desX - self:X()) < snapRange then
+                            self.x = self.desX - (self:X() - self.x)
+                        else
+                            self.x = self.x + (self.speed * dt)
+                            self:anim():resume()
+                        end
+
+                    elseif self:X() > self.desX then
+                        if (self.desX - self:X()) > snapRange then
+                            self.x = self.desX - (self:X() - self.x)
+                        else
+                            self.x = self.x - (self.speed * dt)
+                            self:anim():resume()
+                        end
+                    end
+
+                    if self:Y() < self.desY then
+                        if (self.desY - self:Y()) < snapRange then
+                            self.y = self.desY - (self:Y() - self.y)
+                        else
+                            self.y = self.y + (self.speed * dt)
+                            self:anim():resume()
+                        end
+                    elseif self:Y() > self.desY then
+                        if (self.desY - self:Y()) > snapRange then
+                            self.y = self.desY - (self:Y() - self.y)
+                        else
+                            self.y = self.y - (self.speed * dt)
+                            self:anim():resume()
+                        end
+                    end
+                end
+]]
+
         end
     end
 end

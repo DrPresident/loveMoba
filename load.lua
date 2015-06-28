@@ -16,5 +16,5 @@ function love.load(arg)
     paused = false
 
     tree = Tree:create()
-    mainHero = Nija:create()
+    mainHero = Orcus:create()
 end

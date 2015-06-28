@@ -1,9 +1,3 @@
-rightclick =
-{
-    clicked = false,
-    x = 0,
-    y = 0
-}
 
 function love.mousepressed(x, y, button)
     if button == "r" then
@@ -14,7 +8,7 @@ function love.mousepressed(x, y, button)
         for i = 1, 4 do
             if mainHero.spells[i] ~= nil then
                 if mainHero.spells[i].ready then
-                    mainHero:cast()
+                    mainHero:cast(x, y)
                     break
                 end
             end
