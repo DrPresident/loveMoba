@@ -30,9 +30,10 @@ function Orcus:create()
     orcus.spells[1].backAnim = anim8.newAnimation(
         orcus.spells[1].sprite.grid('1-3', 4), .1)
 
-    orcus.spells[1].duration = 3
-    orcus.spells[1].activeTimer = 3
-    orcus.spells[1].speed = 100
+    orcus.spells[1].duration = 1
+    orcus.spells[1].activeTimer = orcus.spells[1].duration
+    orcus.spells[1].speed = 300
+    orcus.spells[1].cooldown = 5
 
 
 

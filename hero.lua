@@ -133,7 +133,7 @@ function Hero:cast(mouseX, mouseY)
     for i = 1,4 do
         if self.spells[i] == nil then break
         else
-            if self.spells[i].ready then
+            if self.spells[i].ready and self.spells[i].cdTimer <= 0 then
                 self.spells[i].active = true
                 self.spells[i].ready = false
                 self.spells[i].x = self.x

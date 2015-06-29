@@ -40,6 +40,8 @@ function Spell:create(spellType, castFunc, spritePath, rows, columns, delay)
     spell.sprite = SpriteSheet:loadSprite(spritePath, rows, columns, delay)
 
     spell.castFunction = castFunc or default
+    spell.cdTimer = 0
+    spell.activeTimer = 0
 
     return spell
 end
@@ -70,10 +72,15 @@ function Spell:cast(arg1, arg2)
     self.active = true
     self.ready = false
     self.activeTimer = 0
+    self.cdTimer = self.cooldown
     self.castFunction()
 end
 
 function Spell:update(dt)
+
+    if self.cdTimer > 0 then
+        self.cdTimer = self.cdTimer - dt
+    end
 
     if self.active then
         if self.type == aoe then

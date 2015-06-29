@@ -39,11 +39,13 @@ function love.draw ()
     --Debug Info
 
     local spellActiveString = "active"
-    local spellReadyString = "ready"
+    local spellReadyString =  "ready"
+    local spellCDString =     "CD   "
 
     for i = 1, 1 do
         spellReadyString = spellReadyString .. " - " .. tostring(mainHero.spells[i].ready)
         spellActiveString = spellActiveString .. " - " .. tostring(mainHero.spells[i].active)
+        spellCDString = spellCDString .. " - " .. tostring(math.ceil(mainHero.spells[i].cdTimer))
     end
 
     --love version
@@ -66,5 +68,6 @@ function love.draw ()
     love.graphics.print("spells - Q - W - E - R", love.graphics.getWidth() - 200, 110)
     love.graphics.print(spellReadyString, love.graphics.getWidth() - 200, 120)
     love.graphics.print(spellActiveString, love.graphics.getWidth() - 200, 130)
+    love.graphics.print(spellCDString, love.graphics.getWidth() - 200, 140)
 
 end
