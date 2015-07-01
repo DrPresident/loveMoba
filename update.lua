@@ -14,11 +14,4 @@ function love.update(dt)
     --Update GUI/HUD
     loveframes.update(dt)
 
-
-    if mainHero.health > 0 then
-        mainHero.health = mainHero.health - 1
-    else
-        mainHero.health = mainHero.maxHealth
-    end
-
 end
