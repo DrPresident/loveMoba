@@ -13,8 +13,10 @@ Hero =
     scale = 1,
     maxHealth = 100,
     health = 100,
+    healthRegen = .5,
     maxMana = 100,
     mana = 100,
+    manaRegen = .5,
     camera = Camera.create(),
     readySpell,
     passive,
@@ -23,7 +25,8 @@ Hero =
     rightAnim,
     backAnim,
 
-    spells = {}
+    spells = {},
+    buffs = {}
 }
 
 Hero.__index = Hero
@@ -99,6 +102,16 @@ function Hero:update(dt)
         if self.spells[i] ~= nil then
             self.spells[i]:update(dt)
         end
+    end
+
+    if self.health > self.maxHealth then self.health = self.maxHealth
+    elseif self.health < self.maxHealth then
+        self.health = self.health + (self.healthRegen * dt)
+    end
+    
+    if self.mana > self.maxMana then self.mana = self.maxMana
+    elseif self.mana < self.maxMana then
+        self.mana = self.mana + (self.manaRegen * dt)
     end
 end
 
