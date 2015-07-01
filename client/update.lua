@@ -9,8 +9,6 @@ function love.update(dt)
     --Update Cameras
     mainHero.camera:update()
 
-
-
     --Update GUI/HUD
     loveframes.update(dt)
 
