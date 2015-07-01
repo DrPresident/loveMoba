@@ -2,18 +2,16 @@ require "spriteSheet"
 
 Tree =
 {
-    total = 1,
-    treesX = {},
-    treesY = {},
+    total = 1
 }
 
 Tree.__index = Tree
 
 function Tree:create()
-    tree = {}
+    local tree = {}
     setmetatable(Tree, Object)
     setmetatable(tree, Tree)
-    tree.sprite = SpriteSheet:loadSprite("res/tallTree.png", 1, 1, 1, .1)
+    tree.sprite = SpriteSheet:loadSprite("res/environment/tallTree.png", 1, 1, 1, .1)
     return tree
 end
 

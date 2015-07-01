@@ -28,6 +28,10 @@ function Object:Y()
 end
 function Object:move(dt)
     local snapRange = 5
+    local distX = math.abs(self:X() - self.desX)
+    local distY = math.abs(self:Y() - self.desY)
+    local speedX = self.speed
+    local speedY = self.speed
 
     if self:X() == self.desX and self:Y() == self.desY
         then
@@ -37,7 +41,8 @@ function Object:move(dt)
             if (self.desX - self:X()) < snapRange then
                 self.x = self.desX - (self:X() - self.x)
             else
-                self.x = self.x + (self.speed * dt)
+                --self.x = self.x + (self.speed * dt)
+                self.x = self.x + (speedX * dt)
                 self:anim():resume()
             end
 
@@ -45,7 +50,8 @@ function Object:move(dt)
             if (self.desX - self:X()) > snapRange then
                 self.x = self.desX - (self:X() - self.x)
             else
-                self.x = self.x - (self.speed * dt)
+                --self.x = self.x - (self.speed * dt)
+                self.x = self.x - (speedX * dt)
                 self:anim():resume()
             end
         end
@@ -54,14 +60,16 @@ function Object:move(dt)
             if (self.desY - self:Y()) < snapRange then
                 self.y = self.desY - (self:Y() - self.y)
             else
-                self.y = self.y + (self.speed * dt)
+                --self.y = self.y + (self.speed * dt)
+                self.y = self.y + (speedY * dt)
                 self:anim():resume()
             end
         elseif self:Y() > self.desY then
             if (self.desY - self:Y()) > snapRange then
                 self.y = self.desY - (self:Y() - self.y)
             else
-                self.y = self.y - (self.speed * dt)
+                --self.y = self.y - (self.speed * dt)
+                self.y = self.y - (speedY * dt)
                 self:anim():resume()
             end
         end

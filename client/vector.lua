@@ -1,16 +1,23 @@
 Vector =
 {
-    local length,
-    local array = {}
+    length,
+    array = {}
 }
 
-function Vector:Create()
-    length = 0
+Vector.__index = Vector
+
+function Vector:create()
+    local vector = {}
+
+    setmetatable(vector, Vector)
+
+    vector.length = 0
+    return vector
 end
 
 function Vector:pushBack(object)
-    self.array[length + 1] = object
-    self.length = length + 1
+    self.array[self.length + 1] = object
+    self.length = self.length + 1
 end
 
 function Vector:pushFront(object)

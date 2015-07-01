@@ -10,13 +10,14 @@ function love.load(arg)
     --love.window.setFullscreen(true)
 
     --Map Setup
-    map = love.graphics.newImage("res/grass_back.png")
+    map = love.graphics.newImage("res/environment/grass_back.png")
 
     --Startup Values
     paused = false
 
     tree = Tree:create()
     mainHero = Orcus:create()
+    heroes:pushBack(mainHero)
 
     --HUD creation
     local r,g,b,a = love.graphics.getColor()

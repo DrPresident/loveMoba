@@ -11,7 +11,6 @@ function love.draw ()
     --Draw Characters
     mainHero:anim():draw(mainHero.sprite.image, mainHero.x, mainHero.y)
 
-
     --Draw Spells
     for i = 1, 4 do
         if mainHero.spells[i] == nil then break
@@ -31,23 +30,22 @@ function love.draw ()
     mainHero.camera:unset()
 
     --Draw GUI
-
     love.graphics.setColor(0,0,0)
-    love.graphics.rectangle("fill", 0, 0, 50, love.graphics.getHeight())
-    love.graphics.rectangle("fill", love.graphics.getWidth() - 50, 0, 50, love.graphics.getHeight())
+    love.graphics.rectangle("fill", 0, 30, 50, love.graphics.getHeight() - 60)
+    love.graphics.rectangle("fill", love.graphics.getWidth() - 50, 30, 50, love.graphics.getHeight() - 60)
 
     love.graphics.setColor(255, 255, 255)
-    love.graphics.rectangle("fill", 5, 5, 40, love.graphics.getHeight() - 10)
-    love.graphics.rectangle("fill", love.graphics.getWidth() - 45, 5, 40, love.graphics.getHeight() - 10)
+    love.graphics.rectangle("fill", 5, 35, 40, love.graphics.getHeight() - 70)
+    love.graphics.rectangle("fill", love.graphics.getWidth() - 45, 35, 40, love.graphics.getHeight() - 70)
 
     love.graphics.setColor(255, 0, 0)
-    love.graphics.rectangle("fill", 5, 5, 40,
-            (love.graphics.getHeight() - 10) *
+    love.graphics.rectangle("fill", 5, 35, 40,
+            (love.graphics.getHeight() - 70) *
             (mainHero.health / mainHero.maxHealth))
 
     love.graphics.setColor(0, 0, 255)
-    love.graphics.rectangle("fill", love.graphics.getWidth() - 45, 5, 40,
-            (love.graphics.getHeight() - 10) *
+    love.graphics.rectangle("fill", love.graphics.getWidth() - 45, 35, 40,
+            (love.graphics.getHeight() - 70) *
             (mainHero.mana / mainHero.maxMana))
 
     loveframes.draw()

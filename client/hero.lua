@@ -111,16 +111,17 @@ end
 
 function Hero:spellReady(spellNum)
 
-    if self.spells[spellNum].cdTimer <= 0
-       and self.mana > self.spells[spellNum].cost then
-        for i = 1, 4 do
-            if self.spells[i] ~= nil then
-                self.spells[i].ready = false
+    if self.spells[spellNum]~= nil then
+        if self.spells[spellNum].cdTimer <= 0
+           and self.mana > self.spells[spellNum].cost then
+            for i = 1, 4 do
+                if self.spells[i] ~= nil then
+                    self.spells[i].ready = false
+                end
             end
-
-        end
-        if self.spells[spellNum] ~= nil then
-            self.spells[spellNum].ready = true
+            if self.spells[spellNum] ~= nil then
+                self.spells[spellNum].ready = true
+            end
         end
     end
 end
