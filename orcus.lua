@@ -1,7 +1,6 @@
 require "hero"
 require "object"
 require "spriteSheet"
-local anim8 = require "anim8"
 
 Orcus =
 {
@@ -34,6 +33,7 @@ function Orcus:create()
     orcus.spells[1].activeTimer = orcus.spells[1].duration
     orcus.spells[1].speed = 300
     orcus.spells[1].cooldown = 5
+    orcus.spells[1].cost = 35
 
 
 

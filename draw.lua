@@ -30,11 +30,29 @@ function love.draw ()
 
     mainHero.camera:unset()
 
-
-
     --Draw GUI
 
+    love.graphics.setColor(0,0,0)
+    love.graphics.rectangle("fill", 0, 0, 50, love.graphics.getHeight())
+    love.graphics.rectangle("fill", love.graphics.getWidth() - 50, 0, 50, love.graphics.getHeight())
 
+    love.graphics.setColor(255, 255, 255)
+    love.graphics.rectangle("fill", 5, 5, 40, love.graphics.getHeight() - 10)
+    love.graphics.rectangle("fill", love.graphics.getWidth() - 45, 5, 40, love.graphics.getHeight() - 10)
+
+    love.graphics.setColor(255, 0, 0)
+    love.graphics.rectangle("fill", 5, 5, 40,
+            (love.graphics.getHeight() - 10) *
+            (mainHero.health / mainHero.maxHealth))
+
+    love.graphics.setColor(0, 0, 255)
+    love.graphics.rectangle("fill", love.graphics.getWidth() - 45, 5, 40,
+            (love.graphics.getHeight() - 10) *
+            (mainHero.mana / mainHero.maxMana))
+
+    loveframes.draw()
+
+    love.graphics.setColor(baseColor)
 
     --Debug Info
 

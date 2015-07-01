@@ -23,7 +23,8 @@ Spell =
     leftAnim,
     rightAnim,
     backAnim,
-    anim
+    anim,
+    cost
 }
 
 Spell.__index = Spell

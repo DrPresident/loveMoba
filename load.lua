@@ -17,4 +17,8 @@ function love.load(arg)
 
     tree = Tree:create()
     mainHero = Orcus:create()
+
+    --HUD creation
+    local r,g,b,a = love.graphics.getColor()
+    baseColor = {r, g, b, a}
 end

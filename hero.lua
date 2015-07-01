@@ -1,4 +1,3 @@
-local anim8 = require "anim8"
 require "spriteSheet"
 require "math"
 require "camera"
@@ -82,12 +81,6 @@ end
 function Hero:loadSprite(path, delay)
 
     self.sprite = SpriteSheet:loadSprite(path, 4, 3, delay)
-    --self.sprite.image = love.graphics.newImage(path)-- or "res/fail.png")
-
-    --self.sprite.frameWidth = math.floor(self.sprite.image:getWidth() / 3)
-    --self.sprite.frameHeight = math.floor(self.sprite.image:getHeight() / 4)
-
-    --self.sprite.grid = anim8.newGrid(self.sprite.frameWidth, self.sprite.frameHeight, self.sprite.image:getWidth(), self.sprite.image:getHeight())
 
     self.frontAnim = anim8.newAnimation(self.sprite.grid('1-3', 1), delay)
     self.leftAnim = anim8.newAnimation(self.sprite.grid('1-3', 2), delay)
@@ -138,6 +131,7 @@ function Hero:cast(mouseX, mouseY)
                 self.spells[i].ready = false
                 self.spells[i].x = self.x
                 self.spells[i].y = self.y
+                self.mana = self.mana - self.spells[i].cost
                 self.spells[i]:cast(mouseX, mouseY)
                 break
             end
@@ -147,13 +141,16 @@ end
 
 function Hero:spellReady(spellNum)
 
-    for i = 1, 4 do
-        if self.spells[i] ~= nil then
-            self.spells[i].ready = false
-        end
+    if self.spells[spellNum].cdTimer <= 0
+       and self.mana > self.spells[spellNum].cost then
+        for i = 1, 4 do
+            if self.spells[i] ~= nil then
+                self.spells[i].ready = false
+            end
 
-    end
-    if self.spells[spellNum] ~= nil then
-        self.spells[spellNum].ready = true
+        end
+        if self.spells[spellNum] ~= nil then
+            self.spells[spellNum].ready = true
+        end
     end
 end

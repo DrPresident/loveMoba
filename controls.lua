@@ -1,5 +1,8 @@
 
 function love.mousepressed(x, y, button)
+
+    loveframes.mousepressed(x, y, button)
+
     if button == "r" then
         mainHero.desX = x + mainHero.camera.x
         mainHero.desY = y + mainHero.camera.y
@@ -17,10 +20,13 @@ function love.mousepressed(x, y, button)
 end
 
 function love.mousereleased(x, y, button)
-
+    loveframes.mousereleased(x, y, button)
 end
 
 function love.keypressed(key)
+
+    loveframes.keypressed(key)
+
     if key == "escape" then
         love.event.quit()
 
@@ -40,5 +46,7 @@ function love.keypressed(key)
 end
 
 function love.keyreleased(key)
+
+    loveframes.keyreleased(key)
 
 end
