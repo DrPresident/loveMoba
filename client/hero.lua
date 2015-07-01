@@ -38,49 +38,6 @@ function Hero:create()
     return hero
 end
 
-function Hero:move(dt)
-
-    local snapRange = 5
-
-    if self:X() == self.desX and self:Y() == self.desY
-        then
-        self:anim():pauseAtStart()
-    else
-        if self:X() < self.desX then
-            if (self.desX - self:X()) < snapRange then
-                self.x = self.desX - (self:X() - self.x)
-            else
-                self.x = self.x + (self.speed * dt)
-                self:anim():resume()
-            end
-
-        elseif self:X() > self.desX then
-            if (self.desX - self:X()) > snapRange then
-                self.x = self.desX - (self:X() - self.x)
-            else
-                self.x = self.x - (self.speed * dt)
-                self:anim():resume()
-            end
-        end
-
-        if self:Y() < self.desY then
-            if (self.desY - self:Y()) < snapRange then
-                self.y = self.desY - (self:Y() - self.y)
-            else
-                self.y = self.y + (self.speed * dt)
-                self:anim():resume()
-            end
-        elseif self:Y() > self.desY then
-            if (self.desY - self:Y()) > snapRange then
-                self.y = self.desY - (self:Y() - self.y)
-            else
-                self.y = self.y - (self.speed * dt)
-                self:anim():resume()
-            end
-        end
-    end
-end
-
 function Hero:loadSprite(path, delay)
 
     self.sprite = SpriteSheet:loadSprite(path, 4, 3, delay)
@@ -108,7 +65,7 @@ function Hero:update(dt)
     elseif self.health < self.maxHealth then
         self.health = self.health + (self.healthRegen * dt)
     end
-    
+
     if self.mana > self.maxMana then self.mana = self.maxMana
     elseif self.mana < self.maxMana then
         self.mana = self.mana + (self.manaRegen * dt)

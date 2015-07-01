@@ -26,7 +26,7 @@ end
 function Object:Y()
     return self.y + (self.sprite.frameHeight / 2)
 end
-function Object:move(desX, desY, dt)
+function Object:move(dt)
     local snapRange = 5
 
     if self:X() == self.desX and self:Y() == self.desY

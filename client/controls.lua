@@ -11,7 +11,7 @@ function love.mousepressed(x, y, button)
         for i = 1, 4 do
             if mainHero.spells[i] ~= nil then
                 if mainHero.spells[i].ready then
-                    mainHero:cast(x, y)
+                    mainHero:cast(toWorldSpace(x, y))
                     break
                 end
             end
