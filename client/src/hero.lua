@@ -28,6 +28,7 @@ function Hero:create()
     local hero = {}
     setmetatable(Hero, Object)
     setmetatable(hero, Hero)
+    hero.stationary = false
     return hero
 end
 

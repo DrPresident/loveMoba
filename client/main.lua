@@ -14,15 +14,15 @@ require "src.spriteSheet"
 require "src.object"
 require "src.passive"
 require "src.spell"
+require "src.cNetworking"
+require "src.collisions"
 
-cNetworking = require "src.cNetworking"
 class = require "lib.class"
 anim8 = require "lib.anim8.anim8"
 loveframes = require "lib.LoveFrames"
 quickie = require "lib.Quickie"
-lube = require "lib.LUBElibs.LUBE.LUBE"
+lube = require "lib/LUBElibs/LUBE/LUBE"
 UI = require "lib.thranduil.ui.UI"
-HC = require "lib.HardonCollider"
 
 heroes = Vector:create()
 creeps = Vector:create()

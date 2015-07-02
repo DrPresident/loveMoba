@@ -6,10 +6,11 @@ function love.load(arg)
     --love.window.setFullscreen(true)
 
     --Network Setup
-    --client = clientInit()
+    --clientInit()
 
     --Map Setup
     map = love.graphics.newImage("res/environment/grass_back.png")
+    initCollisions(100)
 
     --Startup Values
     paused = false

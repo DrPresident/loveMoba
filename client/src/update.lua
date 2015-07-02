@@ -1,10 +1,13 @@
 function love.update(dt)
 
-    --Update Network
+    --Send/Recieve Packets
     --client:update(dt)
 
     --Move Objects
     mainHero:update(dt)
+
+    --Check Collisions
+    colliders:update(dt)
 
     --Update Cameras
     mainHero.camera:update()

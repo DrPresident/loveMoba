@@ -10,6 +10,7 @@ function Tree:create()
     setmetatable(Tree, Object)
     setmetatable(tree, Tree)
     tree.sprite = SpriteSheet:loadSprite("res/environment/tallTree.png", 1, 1, 1, .1)
+    stationary = true
     return tree
 end
 

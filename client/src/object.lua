@@ -1,6 +1,7 @@
 Object =
 {
-    sprite,-- = SpriteSheet.create(),
+    stationary,
+    sprite,
     x = 50,
     y = 50,
     desX = 100,

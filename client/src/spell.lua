@@ -41,6 +41,8 @@ function Spell:create(spellType, castFunc, spritePath, rows, columns, delay)
     spell.cdTimer = 0
     spell.activeTimer = 0
 
+    spell.stationary = false
+
     return spell
 end
 
