@@ -1,5 +1,3 @@
-require "spriteSheet"
-
 Tree =
 {
     total = 1

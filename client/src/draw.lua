@@ -1,6 +1,3 @@
-require "load"
-require "tree"
-
 function love.draw ()
 
     mainHero.camera:set()

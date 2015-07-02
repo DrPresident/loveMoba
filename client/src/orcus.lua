@@ -1,7 +1,3 @@
-require "hero"
-require "object"
-require "spriteSheet"
-
 Orcus =
 {
 

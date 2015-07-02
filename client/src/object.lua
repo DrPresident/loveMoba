@@ -1,6 +1,3 @@
-require "spriteSheet"
-require "math"
-
 Object =
 {
     sprite,-- = SpriteSheet.create(),

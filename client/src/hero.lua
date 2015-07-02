@@ -1,10 +1,3 @@
-require "spriteSheet"
-require "math"
-require "camera"
-require "object"
-require "passive"
-require "spell"
-
 Hero =
 {
     speed = 100,
@@ -17,7 +10,7 @@ Hero =
     maxMana = 100,
     mana = 100,
     manaRegen = .5,
-    camera = Camera.create(),
+    camera = Camera:create(),
     readySpell,
     passive,
     frontAnim,

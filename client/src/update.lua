@@ -1,7 +1,7 @@
-require "controls"
-require "load"
-
 function love.update(dt)
+
+    --Update Network
+    --client:update(dt)
 
     --Move Objects
     mainHero:update(dt)

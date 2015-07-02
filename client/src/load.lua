@@ -1,13 +1,12 @@
-require "hero"
-require "orcus"
-require "nija"
-require "tree"
-
 function love.load(arg)
 
     --Window Setup
     love.window.setMode(1080, 900)
+
     --love.window.setFullscreen(true)
+
+    --Network Setup
+    --client = clientInit()
 
     --Map Setup
     map = love.graphics.newImage("res/environment/grass_back.png")

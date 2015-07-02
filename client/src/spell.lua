@@ -1,7 +1,3 @@
-require "object"
-require "spriteSheet"
-require "math"
-
 aoe = 0
 onSelf = 1
 target = 2
