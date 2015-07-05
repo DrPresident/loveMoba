@@ -87,6 +87,5 @@ function love.draw ()
 ]]
     love.graphics.print("RECV - " .. tostring(recv), love.graphics.getWidth() - 200, 150)
     love.graphics.print("CONN - " .. tostring(conn), love.graphics.getWidth() - 200, 160)
-    love.graphics.print("DISC - " .. tostring(disc), love.graphics.getWidth() - 200, 170)
 
 end

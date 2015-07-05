@@ -9,6 +9,8 @@ function clientInit(ip)
     client = lube.udpClient
     client:init()
     client:createSocket()
-    client:connect(ip or "127.0.0.1", 18025)
+    client.handshake = "howdy"
     client.callbacks.recv = onReceive
+
+    client:connect(ip or "127.0.0.1", 18025)
 end

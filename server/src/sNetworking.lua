@@ -10,15 +10,18 @@ function onConnect()
 end
 
 function onDisconnect()
-    disc = true
+    conn = false
 end
 
 function serverInit(ip)
     server = lube.udpServer
     server:init()
     server:createSocket()
-    server:listen(18025)
     server.callbacks.recv = onReceive
     server.callbacks.connect = onConnect
     server.callbacks.disconnect = onDisconnect
+
+    server.handshake = "howdy"
+
+    server:listen(18025)
 end

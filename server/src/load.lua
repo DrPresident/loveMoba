@@ -16,7 +16,6 @@ function love.load(arg)
     paused = false
     recv = false
     conn = false
-    disc = false
 
     heroes = Vector:create()
     creeps = Vector:create()
