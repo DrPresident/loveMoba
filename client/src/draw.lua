@@ -55,10 +55,12 @@ function love.draw ()
     local spellReadyString =  "ready"
     local spellCDString =     "CD   "
 
-    for i = 1, 1 do
-        spellReadyString = spellReadyString .. " - " .. tostring(mainHero.spells[i].ready)
-        spellActiveString = spellActiveString .. " - " .. tostring(mainHero.spells[i].active)
-        spellCDString = spellCDString .. " - " .. tostring(math.ceil(mainHero.spells[i].cdTimer))
+    for i = 1, 4 do
+        if mainHero.spells[i] ~= nil then
+            spellReadyString = spellReadyString .. " - " .. tostring(mainHero.spells[i].ready)
+            spellActiveString = spellActiveString .. " - " .. tostring(mainHero.spells[i].active)
+            spellCDString = spellCDString .. " - " .. tostring(math.ceil(mainHero.spells[i].cdTimer))
+        end
     end
 
     --love version

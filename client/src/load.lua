@@ -6,7 +6,7 @@ function love.load(arg)
     --love.window.setFullscreen(true)
 
     --Network Setup
-    --clientInit()
+    clientInit()
 
     --Map Setup
     map = love.graphics.newImage("res/environment/grass_back.png")
@@ -15,8 +15,12 @@ function love.load(arg)
     --Startup Values
     paused = false
 
+    heroes = Vector:create()
+    creeps = Vector:create()
+    collidables = Vector:create()
+
     tree = Tree:create()
-    mainHero = Orcus:create()
+    mainHero = Nija:create()
     heroes:pushBack(mainHero)
 
     --HUD creation
