@@ -25,5 +25,9 @@ UI = require "lib.thranduil.ui.UI"
 
 
 function toWorldSpace(x, y)
-    return x + mainHero.camera.x, y + mainHero.camera.y
+    return x + main().camera.x, y + main().camera.y
+end
+
+function main()
+    return chars["heroes"]:getAt(mainHero)
 end

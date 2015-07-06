@@ -14,14 +14,19 @@ function love.load(arg)
 
     --Startup Values
     paused = false
+    chars = {}
 
-    heroes = Vector:create()
-    creeps = Vector:create()
+    chars["heroes"] = Vector:create()
+    chars["creeps"] = Vector:create()
     collidables = Vector:create()
 
     tree = Tree:create()
-    mainHero = Nija:create()
-    heroes:pushBack(mainHero)
+    mainHero = 1
+    for i = 1, 10 do
+        if i == mainHero then
+            chars["heroes"]:pushBack(Orcus.create())
+        end
+    end
 
     --HUD creation
     local r,g,b,a = love.graphics.getColor()

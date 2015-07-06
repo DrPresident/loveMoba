@@ -2,7 +2,7 @@ require "lib.class"
 require "lib.LUBElibs.LUBE.LUBE"
 
 function onReceive(data)
-
+    chars = data
 end
 
 function clientInit(ip)

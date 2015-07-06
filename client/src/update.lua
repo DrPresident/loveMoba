@@ -2,15 +2,16 @@ function love.update(dt)
     if not paused then
         --Send/Recieve Packets
         client:update(dt)
+        --client:send(chars)
 
         --Move Objects
-        mainHero:update(dt)
+        main():update(dt)
 
         --Check Collisions
         colliders:update(dt)
 
         --Update Cameras
-        mainHero.camera:update()
+        main().camera:update(dt)
 
         --Update GUI/HUD
         loveframes.update(dt)

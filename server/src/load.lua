@@ -7,23 +7,27 @@ function love.load(arg)
 
     --Network Setup
     serverInit()
+    clients = Vector:create()
 
     --Map Setup
-    --map = love.graphics.newImage("res/environment/grass_back.png")
-    --initCollisions(100)
+    map = love.graphics.newImage("res/environment/grass_back.png")
+    initCollisions(100)
 
     --Startup Values
     paused = false
-    recv = false
-    conn = false
+    chars = {}
 
-    heroes = Vector:create()
-    creeps = Vector:create()
+    chars["heroes"] = Vector:create()
+    chars["creeps"] = Vector:create()
     collidables = Vector:create()
 
-    --tree = Tree:create()
-    --mainHero = Nija:create()
-    --heroes:pushBack(mainHero)
+    tree = Tree:create()
+    mainHero = 1
+    for i = 1, 10 do
+        if i == mainHero then
+            chars["heroes"]:pushBack(Orcus.create())
+        end
+    end
 
     --HUD creation
     local r,g,b,a = love.graphics.getColor()

@@ -22,3 +22,12 @@ anim8 = require "lib.anim8.anim8"
 loveframes = require "lib.LoveFrames"
 quickie = require "lib.Quickie"
 UI = require "lib.thranduil.ui.UI"
+
+
+function toWorldSpace(x, y)
+    return x + main().camera.x, y + main().camera.y
+end
+
+function main()
+    return chars["heroes"]:getAt(mainHero)
+end

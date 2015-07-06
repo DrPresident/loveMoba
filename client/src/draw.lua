@@ -1,22 +1,22 @@
 function love.draw ()
 
-    mainHero.camera:set()
+    main().camera:set()
 
     --Draw Map
     love.graphics.draw(map, 0, 0)
 
     --Draw Characters
-    mainHero:anim():draw(mainHero.sprite.image, mainHero.x, mainHero.y)
+    main():anim():draw(main().sprite.image, main().x, main().y)
 
     --Draw Spells
     for i = 1, 4 do
-        if mainHero.spells[i] == nil then break
+        if main().spells[i] == nil then break
         else
-            if mainHero.spells[i].active then
-                mainHero.spells[i]:anim():draw(
-                    mainHero.spells[i].sprite.image,
-                    mainHero.spells[i].x,
-                    mainHero.spells[i].y)
+            if main().spells[i].active then
+                main().spells[i]:anim():draw(
+                    main().spells[i].sprite.image,
+                    main().spells[i].x,
+                    main().spells[i].y)
             end
         end
     end
@@ -24,7 +24,7 @@ function love.draw ()
     --Draw Trees
     love.graphics.draw(tree.sprite.image, 0, 0)
 
-    mainHero.camera:unset()
+    main().camera:unset()
 
     --Draw GUI
     love.graphics.setColor(0,0,0)
@@ -38,12 +38,12 @@ function love.draw ()
     love.graphics.setColor(255, 0, 0)
     love.graphics.rectangle("fill", 5, 35, 40,
             (love.graphics.getHeight() - 70) *
-            (mainHero.health / mainHero.maxHealth))
+            (main().health / main().maxHealth))
 
     love.graphics.setColor(0, 0, 255)
     love.graphics.rectangle("fill", love.graphics.getWidth() - 45, 35, 40,
             (love.graphics.getHeight() - 70) *
-            (mainHero.mana / mainHero.maxMana))
+            (main().mana / main().maxMana))
 
     loveframes.draw()
 
@@ -56,10 +56,10 @@ function love.draw ()
     local spellCDString =     "CD   "
 
     for i = 1, 4 do
-        if mainHero.spells[i] ~= nil then
-            spellReadyString = spellReadyString .. " - " .. tostring(mainHero.spells[i].ready)
-            spellActiveString = spellActiveString .. " - " .. tostring(mainHero.spells[i].active)
-            spellCDString = spellCDString .. " - " .. tostring(math.ceil(mainHero.spells[i].cdTimer))
+        if main().spells[i] ~= nil then
+            spellReadyString = spellReadyString .. " - " .. tostring(main().spells[i].ready)
+            spellActiveString = spellActiveString .. " - " .. tostring(main().spells[i].active)
+            spellCDString = spellCDString .. " - " .. tostring(math.ceil(main().spells[i].cdTimer))
         end
     end
 
@@ -71,13 +71,13 @@ function love.draw ()
     love.graphics.print(tostring(love.mouse.getX()), love.graphics.getWidth() - 200, 20)
     love.graphics.print(tostring(love.mouse.getY()), love.graphics.getWidth() - 200, 30)
 
-    --mainHero
+    --main()
     love.graphics.print("HERO DESTINATION", love.graphics.getWidth() - 200, 50)
-    love.graphics.print(tostring(mainHero.desX), love.graphics.getWidth() - 200, 60)
-    love.graphics.print(tostring(mainHero.desY), love.graphics.getWidth() - 200, 70)
+    love.graphics.print(tostring(main().desX), love.graphics.getWidth() - 200, 60)
+    love.graphics.print(tostring(main().desY), love.graphics.getWidth() - 200, 70)
     love.graphics.print("HERO LOCATION", love.graphics.getWidth() - 200, 80)
-    love.graphics.print(tostring(mainHero.desY), love.graphics.getWidth() - 200, 90)
-    love.graphics.print(tostring(mainHero.desY), love.graphics.getWidth() - 200, 100)
+    love.graphics.print(tostring(main().desY), love.graphics.getWidth() - 200, 90)
+    love.graphics.print(tostring(main().desY), love.graphics.getWidth() - 200, 100)
 
     --spells
     love.graphics.print("spells - Q - W - E - R", love.graphics.getWidth() - 200, 110)
