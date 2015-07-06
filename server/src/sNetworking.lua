@@ -3,7 +3,7 @@ require "lib.LUBElibs.LUBE.LUBE"
 
 function onReceive(data, clientid)
     recv = not recv
-
+--[[
     local accept = false
     for i = 1, clients.length() do
         if clients[i].ip == clientid then
@@ -15,6 +15,7 @@ function onReceive(data, clientid)
     if not accept and clients.length() < 10 then
         clients.pushBack(Client:create(ip, clients.length() + 1))
     end
+	]]
 end
 
 function onConnect()
