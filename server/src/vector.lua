@@ -75,6 +75,6 @@ function Vector:setAt(index, object)
     end
 end
 
-function Vector:length()
-    return length
+function Vector:getLength()
+    return self.length
 end

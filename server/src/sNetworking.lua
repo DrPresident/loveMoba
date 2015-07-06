@@ -2,28 +2,39 @@ require "lib.class"
 require "lib.LUBElibs.LUBE.LUBE"
 
 function onReceive(data, clientid)
-    recv = not recv
---[[
+    recv = recv + 1
+
     local accept = false
-    for i = 1, clients.length() do
+    for i = 1, clients:getLength() do
         if clients[i].ip == clientid then
             accept = true
             break
         end
     end
 
-    if not accept and clients.length() < 10 then
-        clients.pushBack(Client:create(ip, clients.length() + 1))
+    if accept then
+
     end
-	]]
 end
 
 function onConnect()
-    conn = true
+    conn = conn + 1
+
+    local accept = false
+    for i = 1, clients:getLength() do
+        if clients[i].ip == clientid then
+            accept = true
+            break
+        end
+    end
+
+    if not accept and clients.getLength() < 10 then
+        clients.pushBack(Client:create(ip, clients.length() + 1))
+    end
 end
 
 function onDisconnect()
-    conn = false
+    conn = conn - 1
 end
 
 function serverInit(ip)
@@ -34,7 +45,7 @@ function serverInit(ip)
     server.callbacks.connect = onConnect
     server.callbacks.disconnect = onDisconnect
 
-    server.handshake = "howddy"
+    server.handshake = "howdy"
 
     server:listen(18025)
 end

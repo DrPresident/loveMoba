@@ -17,6 +17,9 @@ function love.load(arg)
     paused = false
     chars = {}
 
+    recv = 0
+    conn = 0
+
     chars["heroes"] = Vector:create()
     chars["creeps"] = Vector:create()
     collidables = Vector:create()
