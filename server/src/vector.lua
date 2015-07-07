@@ -16,8 +16,8 @@ function Vector:create()
 end
 
 function Vector:pushBack(object)
-    self.array[self.length + 1] = object
     self.length = self.length + 1
+    self.array[self.length] = object
 end
 
 function Vector:pushFront(object)

@@ -2,7 +2,7 @@ function love.update(dt)
     if not paused then
         --Send/Recieve Packets
         client:update(dt)
-        --client:send(chars)
+        --client:send(bin:pack(main()))
 
         --Move Objects
         main():update(dt)

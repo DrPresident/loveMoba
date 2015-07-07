@@ -29,5 +29,5 @@ function toWorldSpace(x, y)
 end
 
 function main()
-    return chars["heroes"]:getAt(mainHero)
+    return rootData["heroes"]:getAt(mainHero)
 end

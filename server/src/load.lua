@@ -15,20 +15,20 @@ function love.load(arg)
 
     --Startup Values
     paused = false
-    chars = {}
+    rootData = {}
 
     recv = 0
     conn = 0
 
-    chars["heroes"] = Vector:create()
-    chars["creeps"] = Vector:create()
+    rootData["heroes"] = {}
+    rootData["creeps"] = {}
     collidables = Vector:create()
 
     tree = Tree:create()
     mainHero = 1
     for i = 1, 10 do
         if i == mainHero then
-            chars["heroes"]:pushBack(Orcus.create())
+            rootData["heroes"]["main"] = Orcus:create()
         end
     end
 

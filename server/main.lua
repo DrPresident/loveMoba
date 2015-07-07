@@ -16,6 +16,7 @@ require "src.passive"
 require "src.spell"
 require "src.sNetworking"
 require "src.collisions"
+require "src.client"
 
 class = require "lib.class"
 anim8 = require "lib.anim8.anim8"
@@ -29,5 +30,5 @@ function toWorldSpace(x, y)
 end
 
 function main()
-    return chars["heroes"]:getAt(mainHero)
+    return rootData["heroes"]["main"]
 end

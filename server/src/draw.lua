@@ -54,6 +54,7 @@ function love.draw ()
     local spellActiveString = "active"
     local spellReadyString =  "ready"
     local spellCDString =     "CD   "
+    local clientString =      "CLIENTS"
 
     for i = 1, 4 do
         if main().spells[i] ~= nil then
@@ -61,6 +62,11 @@ function love.draw ()
             spellActiveString = spellActiveString .. " - " .. tostring(main().spells[i].active)
             spellCDString = spellCDString .. " - " .. tostring(math.ceil(main().spells[i].cdTimer))
         end
+    end
+
+    for i = 1, clients:getLength() do
+        --clientString = clientString .. "\n" .. clients[i].id .. "ping - " .. clients[i].data.ping
+        love.graphics.print(clients:getAt(i).id .. "ping - " .. clients:getAt(i).data.ping, love.graphics.getWidth() - 500, 10 * i)
     end
 
     --love version
@@ -87,5 +93,7 @@ function love.draw ()
 
     love.graphics.print("RECV - " .. tostring(recv), love.graphics.getWidth() - 200, 150)
     love.graphics.print("CONN - " .. tostring(conn), love.graphics.getWidth() - 200, 160)
+
+    love.graphics.print(clients:getLength(), love.graphics.getWidth() - 200, 180)
 
 end
