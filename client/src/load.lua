@@ -28,7 +28,12 @@ function love.load(arg)
         end
     end
 
-    --HUD creation
+    --get base color for drawing
     local r,g,b,a = love.graphics.getColor()
     baseColor = {r, g, b, a}
+
+    --HUD creation
+    initMainMenu()
+    hideMainMenu()
+
 end

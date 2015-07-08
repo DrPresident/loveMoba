@@ -1,4 +1,3 @@
-
 function love.mousepressed(x, y, button)
 
     if not paused then
