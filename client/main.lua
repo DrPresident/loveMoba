@@ -45,8 +45,6 @@ function randomHero()
         return Orcus.create()
     elseif rand == 2 then
         return Nija.create()
-    else
-        --return Orcus.create()
     end
 
 end
