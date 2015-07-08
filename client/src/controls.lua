@@ -1,7 +1,8 @@
 function love.mousepressed(x, y, button)
 
+    loveframes.mousepressed(x, y, button)
+
     if not paused then
-        loveframes.mousepressed(x, y, button)
 
         if button == "r" then
             main().desX = x + main().camera.x
@@ -21,15 +22,20 @@ function love.mousepressed(x, y, button)
 end
 
 function love.mousereleased(x, y, button)
+
+    loveframes.mousereleased(x, y, button)
+
     if not paused then
-        loveframes.mousereleased(x, y, button)
+
     end
+
 end
 
 function love.keypressed(key)
 
+    loveframes.keypressed(key)
+
     if not paused then
-        loveframes.keypressed(key)
 
         if key == "q" then
             main():spellReady(1)
@@ -46,6 +52,7 @@ function love.keypressed(key)
             client:send(1)
         end
     end
+
 
     if key == "p" then
         paused = not paused

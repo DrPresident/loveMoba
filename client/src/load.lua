@@ -13,7 +13,7 @@ function love.load(arg)
     initCollisions(100)
 
     --Startup Values
-    paused = false
+    paused = true
     rootData = {}
 
     rootData["heroes"] = {}
@@ -22,18 +22,14 @@ function love.load(arg)
 
     tree = Tree:create()
     mainHero = 1
-    for i = 1, 10 do
-        if i == mainHero then
-            rootData["heroes"]["main"] = Orcus:create()
-        end
-    end
 
     --get base color for drawing
     local r,g,b,a = love.graphics.getColor()
     baseColor = {r, g, b, a}
 
-    --HUD creation
-    initMainMenu()
-    hideMainMenu()
+    --GUI creation
+    initGUI()
+
+    loveframes.SetState("heroselection")
 
 end

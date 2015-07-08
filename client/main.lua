@@ -30,5 +30,23 @@ function toWorldSpace(x, y)
 end
 
 function main()
-    return rootData["heroes"]["main"]
+    return rootData["heroes"][mainHero]
+end
+
+function setMain(hero)
+    rootData["heroes"][mainHero] = hero
+end
+
+function randomHero()
+    math.randomseed(os.time())
+    local rand = math.random(2)
+
+    if rand == 1 then
+        return Orcus.create()
+    elseif rand == 2 then
+        return Nija.create()
+    else
+        --return Orcus.create()
+    end
+
 end

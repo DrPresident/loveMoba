@@ -12,9 +12,8 @@ function love.update(dt)
 
         --Update Cameras
         main().camera:update(dt)
-
-        --Update GUI/HUD
-        loveframes.update(dt)
     end
 
+    --Update GUI/HUD
+    loveframes.update(dt)
 end
