@@ -14,6 +14,7 @@ function love.load(arg)
 
     --Startup Values
     paused = true
+    typing = false
     rootData = {}
 
     rootData["heroes"] = {}
@@ -30,6 +31,8 @@ function love.load(arg)
     --GUI creation
     initGUI()
 
-    loveframes.SetState("heroselection")
+    setMain(Orcus.create())
+    paused = false
+    loveframes.SetState("game")
 
 end

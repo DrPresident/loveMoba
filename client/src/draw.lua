@@ -29,21 +29,21 @@ function love.draw ()
 
         --Draw GUI
         love.graphics.setColor(0,0,0)
-        love.graphics.rectangle("fill", 0, 30, 50, love.graphics.getHeight() - 60)
-        love.graphics.rectangle("fill", love.graphics.getWidth() - 50, 30, 50, love.graphics.getHeight() - 60)
+        love.graphics.rectangle("fill", 0, 0, 50, love.graphics.getHeight() - 100)
+        love.graphics.rectangle("fill", love.graphics.getWidth() - 50, 0, 50, love.graphics.getHeight() - 100)
 
         love.graphics.setColor(255, 255, 255)
-        love.graphics.rectangle("fill", 5, 35, 40, love.graphics.getHeight() - 70)
-        love.graphics.rectangle("fill", love.graphics.getWidth() - 45, 35, 40, love.graphics.getHeight() - 70)
+        love.graphics.rectangle("fill", 5, 5, 40, love.graphics.getHeight() - 110)
+        love.graphics.rectangle("fill", love.graphics.getWidth() - 45, 5, 40, love.graphics.getHeight() - 110)
 
         love.graphics.setColor(255, 0, 0)
-        love.graphics.rectangle("fill", 5, 35, 40,
-                (love.graphics.getHeight() - 70) *
+        love.graphics.rectangle("fill", 5, 5, 40,
+                (love.graphics.getHeight() - 110) *
                 (main().health / main().maxHealth))
 
         love.graphics.setColor(0, 0, 255)
-        love.graphics.rectangle("fill", love.graphics.getWidth() - 45, 35, 40,
-                (love.graphics.getHeight() - 70) *
+        love.graphics.rectangle("fill", love.graphics.getWidth() - 45, 5, 40,
+                (love.graphics.getHeight() - 110) *
                 (main().mana / main().maxMana))
 
         love.graphics.setColor(baseColor)

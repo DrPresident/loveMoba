@@ -19,7 +19,7 @@ function initGUI()
 
     --Hero Selection
     local heroSelectFrame = loveframes.Create("frame")
-    heroSelectFrame:SetName("")
+        :SetName("")
         :SetSize(love.graphics.getWidth(), love.graphics.getHeight())
         :Center()
         :ShowCloseButton(false)
@@ -157,7 +157,7 @@ function initGUI()
 
         --Random
         local randomButton = loveframes.Create("button", heroSelectFrame)
-        randomButton:SetText("Random Hero")
+            :SetText("Random Hero")
             :SetSize(100, 50)
             :SetPos(900, 800)
 
@@ -167,27 +167,130 @@ function initGUI()
             paused = false
         end
 
-    local hudPanel = loveframes.Create("panel")
-    hudPanel:SetSize(love.graphics.getWidth(), 50)
-        :SetPos(0, 500)
+    --HUD
+    local hudFrame = loveframes.Create("frame")
+        :SetName("")
+        :SetSize(love.graphics.getWidth(), 100)
+        :SetPos(0, love.graphics.getHeight() - 100)
+        :ShowCloseButton(false)
+        :SetModal(false)
         :SetState("game")
 
-        local spell1Button = loveframes.Create("button", hudPanel)
-        spell1Button:SetSize(50, 50)
-            :SetPos(200, 10)
-            :SetText("Q")
+        local spellsPanel = loveframes.Create("panel", hudFrame)
+            :SetSize(200, 70)
+            :SetPos(300, 10)
 
+            spell1Button = loveframes.Create("imagebutton", spellsPanel)
+                :SetSize(50, 50)
+                :SetPos(0, 0)
+                :SetText("Q")
+                :SetImage("res/trans.png")
+            spell1Button.OnClick = function(object, x, y)
+                main():spellReady(1)
+            end
 
-end
+            spell1Label = loveframes.Create("text", spellsPanel)
+                :SetText("First")
+                :SetPos(0, 50)
 
-function showMainMenu()
-    loveframes:SetState("mainmenu")
-end
+            spell2Button = loveframes.Create("button", spellsPanel)
+                :SetSize(50, 50)
+                :SetPos(50, 0)
+                :SetText("W")
+            spell2Button.OnClick = function(object, x, y)
+                main():spellReady(2)
+            end
 
-function showHeroSelection()
-    loveframes:SetState("heroselection")
-end
+            spell2Label = loveframes.Create("text", spellsPanel)
+                :SetText("Second")
+                :SetPos(50, 50)
 
-function showHUD()
-    loveframes:SetState("game")
+            spell3Button = loveframes.Create("button", spellsPanel)
+                :SetSize(50, 50)
+                :SetPos(100, 0)
+                :SetText("E")
+            spell3Button.OnClick = function(object, x, y)
+                main():spellReady(3)
+            end
+
+            spell3Label = loveframes.Create("text", spellsPanel)
+                :SetText("Third")
+                :SetPos(100, 50)
+
+            spell4Button = loveframes.Create("button", spellsPanel)
+                :SetSize(50, 50)
+                :SetPos(150, 0)
+                :SetText("R")
+            spell4Button.OnClick = function(object, x, y)
+                main():spellReady(4)
+            end
+
+            spell4Label = loveframes.Create("text", spellsPanel)
+                :SetText("Fourth")
+                :SetPos(150, 50)
+
+        local itemsPanel = loveframes.Create("panel", hudFrame)
+            :SetSize(200, 100)
+            :SetPos(50, -20)
+
+            item1Button = loveframes.Create("button", itemsPanel)
+                :SetText("Item")
+                :SetSize(50, 50)
+                :SetPos(0, 0)
+
+            item2Button = loveframes.Create("button", itemsPanel)
+                :SetText("Item")
+                :SetSize(50, 50)
+                :SetPos(50, 0)
+
+            item3Button = loveframes.Create("button", itemsPanel)
+                :SetText("Item")
+                :SetSize(50, 50)
+                :SetPos(100, 0)
+
+            item4Button = loveframes.Create("button", itemsPanel)
+                :SetText("Item")
+                :SetSize(50, 50)
+                :SetPos(150, 0)
+
+            item5Button = loveframes.Create("button", itemsPanel)
+                :SetText("Item")
+                :SetSize(50, 50)
+                :SetPos(0, 50)
+
+            item6Button = loveframes.Create("button", itemsPanel)
+                :SetText("Item")
+                :SetSize(50, 50)
+                :SetPos(50, 50)
+
+            item7Button = loveframes.Create("button", itemsPanel)
+                :SetText("Item")
+                :SetSize(50, 50)
+                :SetPos(100, 50)
+
+            item8Button = loveframes.Create("button", itemsPanel)
+                :SetText("Item")
+                :SetSize(50, 50)
+                :SetPos(150, 50)
+
+        local teamChatPanel = loveframes.Create("panel", hudFrame)
+            :SetSize(200, 140)
+            :SetPos(550, -50)
+
+            teamChatInput = loveframes.Create("textinput", teamChatPanel)
+                :SetSize(200, 10)
+                :SetPos(0, 130)
+
+            teamChatInput.OnEnter = function(object)
+                client:send("teamchat:" + teamChatInput.text)
+                object:Clear()
+            end
+
+        local allChatPanel = loveframes.Create("panel", hudFrame)
+            :SetSize(200, 140)
+            :SetPos(760, -50)
+
+            allChatInput = loveframes.Create("textinput", allChatPanel)
+                :SetSize(200, 10)
+                :SetPos(0, 130)
 end
