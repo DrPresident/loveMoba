@@ -61,6 +61,19 @@ function initGUI()
             :SetText("Water")
             :SetPos(130, 0)
 
+        local mikitaButton = loveframes.Create("button", waterPanel)
+            :SetText("Mikita")
+            :SetSize(50, 50)
+            :SetPos(10, 50)
+
+        mikitaButton.OnClick = function(object, x, y)
+            --[[
+            setMain(Mikita.create())
+            loveframes:SetState("game")
+            paused = false
+            ]]
+        end
+
         --Earth Heroes
         local earthPanel = loveframes.Create("panel", heroSelectFrame)
             :SetSize(300, 350)
@@ -69,6 +82,32 @@ function initGUI()
         local earthHeading = loveframes.Create("text", earthPanel)
             :SetText("Earth")
             :SetPos(130, 0)
+
+        local davidButton = loveframes.Create("button", earthPanel)
+            :SetText("David")
+            :SetSize(50, 50)
+            :SetPos(10, 50)
+
+        davidButton.OnClick = function(object, x, y)
+            --[[
+            setMain(David.create())
+            loveframes:SetState("game")
+            paused = false
+            ]]
+        end
+
+        local turtleButton = loveframes.Create("button", earthPanel)
+            :SetText("Turtle")
+            :SetSize(50, 50)
+            :SetPos(70, 50)
+
+        turtleButton.OnClick = function(object, x, y)
+            --[[
+            setMain(Turtle.create())
+            loveframes:SetState("game")
+            paused = false
+            ]]
+        end
 
         --Physical Heroes
         local physicalPanel = loveframes.Create("panel", heroSelectFrame)
@@ -80,7 +119,7 @@ function initGUI()
             :SetPos(225, 0)
 
         local nijaButton = loveframes.Create("button", physicalPanel)
-        nijaButton:SetText("Nija")
+            :SetText("Nija")
             :SetSize(50, 50)
             :SetPos(10, 50)
 
@@ -88,6 +127,32 @@ function initGUI()
             setMain(Nija.create())
             loveframes:SetState("game")
             paused = false
+        end
+
+        local dadButton = loveframes.Create("button", physicalPanel)
+            :SetText("Dad")
+            :SetSize(50, 50)
+            :SetPos(70, 50)
+
+        dadButton.OnClick = function(object, x, y)
+            --[[
+            setMain(Dad.create())
+            loveframes:SetState("game")
+            paused = false
+            ]]
+        end
+
+        local raedenButton = loveframes.Create("button", physicalPanel)
+            :SetText("Raeden")
+            :SetSize(50, 50)
+            :SetPos(130, 50)
+
+        raedenButton.OnClick = function(object, x, y)
+            --[[
+            setMain(Raeden.create())
+            loveframes:SetState("game")
+            paused = false
+            ]]
         end
 
         --Random
