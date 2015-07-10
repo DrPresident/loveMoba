@@ -8,8 +8,7 @@ Nija.__index = Nija
 function Nija:create()
     local nija = {}
 
-    setmetatable(Hero, Object)
-    setmetatable(Nija, Hero)
+    setmetatable(Nija, Hero.create())
     setmetatable(nija, Nija)
 
     nija:loadSprite("res/nija/sprite.png", .1)

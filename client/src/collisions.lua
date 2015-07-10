@@ -1,7 +1,5 @@
-local HC = require "lib.HardonCollider"
-
 function initCollisions(cellSize)
-    colliders = HC(cellSize, handle, onCollisionExit)
+    Collider = HC(cellSize, handle, onCollisionExit)
 end
 
 local function handle(dt, obOne, obTwo, dx, dy)

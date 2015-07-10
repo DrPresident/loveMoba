@@ -29,6 +29,8 @@ function Hero:create()
     setmetatable(Hero, Object)
     setmetatable(hero, Hero)
     hero.stationary = false
+
+    col = Collider.addRectangle()
     return hero
 end
 

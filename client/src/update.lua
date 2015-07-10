@@ -8,7 +8,7 @@ function love.update(dt)
         main():update(dt)
 
         --Check Collisions
-        colliders:update(dt)
+        Collider:update(dt)
 
         --Update Cameras
         main().camera:update(dt)

@@ -21,6 +21,7 @@ require "src.gui"
 class = require "lib.class"
 anim8 = require "lib.anim8.anim8"
 loveframes = require "lib.LoveFrames"
+HC = require "lib.HardonCollider"
 
 
 function toWorldSpace(x, y)
