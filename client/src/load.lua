@@ -31,11 +31,11 @@ function love.load(arg)
     --GUI creation
     initGUI()
 
-    loveframes.SetState("heroselection")
+    --loveframes.SetState("heroselection")
 
-    --[[
+
     setMain(Orcus.create())
     paused = false
     loveframes.SetState("game")
-    ]]
+
 end

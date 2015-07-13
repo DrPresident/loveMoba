@@ -1,4 +1,5 @@
 function love.update(dt)
+    
     if not paused then
         --Send/Recieve Packets
         client:update(dt)

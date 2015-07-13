@@ -6,7 +6,9 @@ Object =
     y = 50,
     desX = 100,
     desY = 100,
-    speed
+    speed,
+    type = "object",
+    col
 }
 
 Object.__index = Object
@@ -26,7 +28,7 @@ function Object:Y()
 end
 
 function Object:move(dt)
-    
+
     local snapRange = 5
     local distX = math.abs(self:X() - self.desX)
     local distY = math.abs(self:Y() - self.desY)

@@ -43,6 +43,8 @@ function Spell:create(spellType, castFunc, spritePath, rows, columns, delay)
 
     spell.stationary = false
 
+    spell.type = "spell"
+
     return spell
 end
 

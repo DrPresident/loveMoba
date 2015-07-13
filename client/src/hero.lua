@@ -26,11 +26,17 @@ Hero.__index = Hero
 
 function Hero:create()
     local hero = {}
-    setmetatable(Hero, Object)
+
+    setmetatable(Hero, Object.create())
     setmetatable(hero, Hero)
+
+    hero.type = "hero"
+
+    col = Collider:addRectangle(5,5,5,5)
+    col.object = hero
+
     hero.stationary = false
 
-    col = Collider.addRectangle()
     return hero
 end
 
@@ -46,6 +52,8 @@ function Hero:loadSprite(path, delay)
 end
 
 function Hero:update(dt)
+
+    --self.x, self.y = self.col:unpack()
 
     self:move(dt)
 

@@ -1,6 +1,5 @@
 Orcus =
 {
-
 }
 
 Orcus.__index = Orcus
@@ -13,6 +12,8 @@ function Orcus:create()
     setmetatable(orcus, Orcus)
 
     orcus:loadSprite("res/orcus/sprite.png", .1)
+
+    --col = Collider:addRectangle(orcus.x, orcus.y, 5, 5)
 
     --Fireball Setup
     orcus.spells[1] = Spell:create(point, orcus.fireBall, "res/orcus/fireBall.png", 4, 3, .1)

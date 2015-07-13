@@ -180,11 +180,10 @@ function initGUI()
             :SetSize(200, 70)
             :SetPos(300, 10)
 
-            spell1Button = loveframes.Create("imagebutton", spellsPanel)
+            spell1Button = loveframes.Create("button", spellsPanel)
                 :SetSize(50, 50)
                 :SetPos(0, 0)
                 :SetText("Q")
-                :SetImage("res/trans.png")
             spell1Button.OnClick = function(object, x, y)
                 main():spellReady(1)
             end

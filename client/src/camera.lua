@@ -4,7 +4,7 @@ Camera =
     y = 0,
     scale = 1,
     sensitivity = 10,
-    edgeMargin = 50
+    edgeMargin = 10
 }
 
 Camera.__index  = Camera
@@ -44,8 +44,8 @@ function Camera:setScale(s)
 end
 
 function Camera:update()
-    dx = 0
-    dy = 0
+    local dx = 0
+    local dy = 0
 
     if love.mouse.getX() > love.graphics.getWidth() - self.edgeMargin and
         self.x <= 10780 then
