@@ -51,9 +51,12 @@ function love.keypressed(key)
 
     if key == "p" then
         paused = not paused
-    elseif key == "escape" then
+    end
+]]
+    if key == "escape" then
         love.event.quit()
     end
+--[[
 end
 
 function love.keyreleased(key)

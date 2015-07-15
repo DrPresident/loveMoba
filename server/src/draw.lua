@@ -63,12 +63,12 @@ function love.draw ()
             spellCDString = spellCDString .. " - " .. tostring(math.ceil(main().spells[i].cdTimer))
         end
     end
-
+--[[
     for i = 1, clients:getLength() do
         --clientString = clientString .. "\n" .. clients[i].id .. "ping - " .. clients[i].data.ping
         love.graphics.print(clients:getAt(i).id .. "ping - " .. clients:getAt(i).data.ping, love.graphics.getWidth() - 500, 10 * i)
     end
-
+]]
     --love version
     love.graphics.print(string.format("Version %d.%d.%d - %s", love.getVersion()), love.graphics.getWidth() - 200, 0)
 
@@ -94,6 +94,6 @@ function love.draw ()
     love.graphics.print("RECV - " .. tostring(recv), love.graphics.getWidth() - 200, 150)
     love.graphics.print("CONN - " .. tostring(conn), love.graphics.getWidth() - 200, 160)
 
-    love.graphics.print(clients:getLength(), love.graphics.getWidth() - 200, 180)
+    --love.graphics.print(clients:getLength(), love.graphics.getWidth() - 200, 180)
 
 end

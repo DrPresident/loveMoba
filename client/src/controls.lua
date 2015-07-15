@@ -1,3 +1,5 @@
+require "string"
+
 function love.mousepressed(x, y, button)
 
     loveframes.mousepressed(x, y, button)
@@ -35,11 +37,98 @@ function love.keypressed(key)
 
     loveframes.keypressed(key)
 
+    if key == "lshift" or key == "rshift" then
+        shift = true
+    end
+
     if teamTyping then
 
-        teamChatInput:SetText(teamChatInput:GetText() .. key)
+        if key == "up"
+            or key == "down"
+            or key == "right"
+            or key == "left"
+            or key == "home"
+            or key == "end"
+            or key == "pageup"
+            or key == "pageup"
+            or key == "insert"
+            or key == "tab"
+            or key == "clear"
+            or key == "delete"
+            or key == "lshift"
+            or key == "rshift"
+            or key == "lctrl"
+            or key == "rctrl"
+            or key == "lalt"
+            or key == "ralt"
+            or key == "lgui"
+            or key == "rgui"
+            or key == "mode"
+            or key == "capslock"
+            or key == "numlock"
+            or key == "scrolllock"
+        then
+
+        elseif key == "return" then
+            client:send("tc1-" .. teamChatInput:GetText())
+            teamChatBox:SetText(teamChatBox:GetText() .. '\n' .. teamChatInput:GetText())
+            teamChatInput:Clear()
+            teamTyping = false
+            teamChatInput:SetFocus(false)
+
+        elseif key == "backspace" then
+            teamChatInput:SetText(
+                string.sub(teamChatInput:GetText(),
+                        1, string.len(teamChatInput:GetText())))
+
+
+        else
+            teamChatInput:SetText(teamChatInput:GetText() .. key)
+        end
 
     elseif allTyping then
+
+        if key == "up"
+            or key == "down"
+            or key == "right"
+            or key == "left"
+            or key == "home"
+            or key == "end"
+            or key == "pageup"
+            or key == "pageup"
+            or key == "insert"
+            or key == "tab"
+            or key == "clear"
+            or key == "delete"
+            or key == "lshift"
+            or key == "rshift"
+            or key == "lctrl"
+            or key == "rctrl"
+            or key == "lalt"
+            or key == "ralt"
+            or key == "lgui"
+            or key == "rgui"
+            or key == "mode"
+            or key == "capslock"
+            or key == "numlock"
+            or key == "scrolllock"
+        then
+
+        elseif key == "return" then
+            client:send("ac-" .. allChatInput:GetText())
+            --allChatBox:SetText(allChatBox:GetText() .. '\n' .. allChatInput:GetText())
+            allChatInput:Clear()
+            allTyping = false
+            allChatInput:SetFocus(false)
+
+        elseif key == "backspace" then
+            allChatInput:SetText(
+                string.sub(allChatInput:GetText(),
+                        1, string.len(allChatInput:GetText())))
+
+        else
+            allChatInput:SetText(allChatInput:GetText() .. key)
+        end
 
     elseif not paused then
 
@@ -54,8 +143,14 @@ function love.keypressed(key)
 
         elseif key == "r" then
             main():spellReady(4)
+
         elseif key == " " then
             client:send(1)
+
+        elseif shift and key == "return" then
+            allTyping = true
+            allChatInput:SetFocus(true)
+
         elseif key == "return" then
             teamTyping = true
             teamChatInput:SetFocus(true)
@@ -73,5 +168,9 @@ end
 function love.keyreleased(key)
 
     loveframes.keyreleased(key)
+
+    if key == "lshift" or key == "rshift" then
+        shift = false
+    end
 
 end

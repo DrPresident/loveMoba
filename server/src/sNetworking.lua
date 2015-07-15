@@ -9,19 +9,23 @@ function onReceive(data, clientid)
 
     if port == 18025 then
 
-        for i = 1, clients:getLength() do
-            if clients[i].ip == ip then
-                accept = true
-                local clientNum = i
-                recv = recv + 1
-                break
-            end
+        if string.sub(data, 1, 4) == "tc1-" then
+            team1Chat = team1Chat .. '\n' .. string.sub(data, 5)
+            recv = recv + 1
+
+        elseif string.sub(data, 1, 4) == "tc2-" then
+            team2Chat = team2Chat .. '\n' .. string.sub(data, 5)
+            recv = recv + 1
+
+        elseif string.sub(data, 1, 3) == "ac-" then
+            allChat = allChat .. '\n' .. string.sub(data, 4)
+            server:send("ac-" .. allChat)
+            recv = recv + 1
+
         end
 
-        if accept then
-            rootData["heroes"].setAt(i, data)
-            refreshAllClients()
-        end
+        --rootData["heroes"].setAt(i, data)
+        refreshAllClients()
     end
 end
 
@@ -32,19 +36,6 @@ function onConnect(clientid)
 
     if port == 18025 then
 
-        for i = 1, clients:getLength() do
-            if clients[i].ip == ip then
-                accept = true
-                conn = conn + 1
-                break
-            end
-        end
-
-        if not accept and clients:getLength() < 10 then
-            clients.pushBack(Client:create(ip, clients.length() + 1))
-            conn = conn + 1
-        end
-
     end
 end
 
@@ -54,9 +45,9 @@ end
 
 function refreshAllClients()
 
-    for i = 1, clients:getLength() do
-        --server:send(lube.bin:pack(rootData), clients:getAt(i).ip)
-    end
+    server:send("tc1-" .. team1Chat)
+    server:send("tc2-" .. team2Chat)
+    server:send("ac-" .. allChat)
 
 end
 

@@ -16,6 +16,7 @@ function love.load(arg)
     paused = true
     teamTyping = false
     allTyping = false
+    shift = false
     rootData = {}
 
     rootData["heroes"] = {}

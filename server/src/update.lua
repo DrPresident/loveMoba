@@ -12,7 +12,7 @@ function love.update(dt)
         colliders:update(dt)
 
         --Update Cameras
-        main().camera:update(dt)
+        --main().camera:update(dt)
 
         --Update GUI/HUD
         loveframes.update(dt)

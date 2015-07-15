@@ -7,7 +7,6 @@ function love.load(arg)
 
     --Network Setup
     serverInit()
-    clients = Vector:create()
 
     --Map Setup
     map = love.graphics.newImage("res/environment/grass_back.png")
@@ -15,6 +14,9 @@ function love.load(arg)
 
     --Startup Values
     paused = false
+    team1Chat = ""
+    team2Chat = ""
+    allChat = ""
     rootData = {}
 
     recv = 0
