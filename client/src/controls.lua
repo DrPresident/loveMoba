@@ -35,7 +35,13 @@ function love.keypressed(key)
 
     loveframes.keypressed(key)
 
-    if not paused then
+    if teamTyping then
+
+        teamChatInput:SetText(teamChatInput:GetText() .. key)
+
+    elseif allTyping then
+
+    elseif not paused then
 
         if key == "q" then
             main():spellReady(1)
@@ -50,6 +56,9 @@ function love.keypressed(key)
             main():spellReady(4)
         elseif key == " " then
             client:send(1)
+        elseif key == "return" then
+            teamTyping = true
+            teamChatInput:SetFocus(true)
         end
     end
 

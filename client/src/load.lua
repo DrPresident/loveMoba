@@ -14,7 +14,8 @@ function love.load(arg)
 
     --Startup Values
     paused = true
-    typing = false
+    teamTyping = false
+    allTyping = false
     rootData = {}
 
     rootData["heroes"] = {}

@@ -276,13 +276,20 @@ function initGUI()
             :SetSize(200, 140)
             :SetPos(550, -50)
 
+            teamChatBox = loveframes.Create("text", teamChatPanel)
+                :SetSize(200, 130)
+                :SetPos(0, 0)
+
             teamChatInput = loveframes.Create("textinput", teamChatPanel)
                 :SetSize(200, 10)
                 :SetPos(0, 130)
 
             teamChatInput.OnEnter = function(object)
-                client:send("teamchat:" + teamChatInput.text)
+                client:send("tc-" .. teamChatInput:GetText())
+                teamChatBox:SetText(teamChatBox:GetText() .. '\n' .. object:GetText())
                 object:Clear()
+                object:SetFocus(false)
+                teamTyping = false
             end
 
         local allChatPanel = loveframes.Create("panel", hudFrame)
