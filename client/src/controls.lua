@@ -71,7 +71,6 @@ function love.keypressed(key)
 
         elseif key == "return" then
             client:send("tc1-" .. teamChatInput:GetText())
-            teamChatBox:SetText(teamChatBox:GetText() .. '\n' .. teamChatInput:GetText())
             teamChatInput:Clear()
             teamTyping = false
             teamChatInput:SetFocus(false)
@@ -115,8 +114,9 @@ function love.keypressed(key)
         then
 
         elseif key == "return" then
-            client:send("ac-" .. allChatInput:GetText())
-            --allChatBox:SetText(allChatBox:GetText() .. '\n' .. allChatInput:GetText())
+            if string.len(allChatInput:GetText()) >= 1 then
+                client:send("ac-" .. allChatInput:GetText())
+            end
             allChatInput:Clear()
             allTyping = false
             allChatInput:SetFocus(false)
@@ -148,20 +148,19 @@ function love.keypressed(key)
             client:send(1)
 
         elseif shift and key == "return" then
-            allTyping = true
             allChatInput:SetFocus(true)
 
         elseif key == "return" then
-            teamTyping = true
             teamChatInput:SetFocus(true)
         end
     end
 
-
-    if key == "p" then
-        paused = not paused
-    elseif key == "escape" then
-        love.event.quit()
+    if not teamTyping and not allTyping then
+        if key == "p" then
+            paused = not paused
+        elseif key == "escape" then
+            love.event.quit()
+        end
     end
 end
 

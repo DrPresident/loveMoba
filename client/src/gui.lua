@@ -277,22 +277,30 @@ function initGUI()
             :SetPos(550, -50)
 
             teamChatBox = loveframes.Create("text", teamChatPanel)
-                :SetSize(200, 130)
+                :SetSize(200, 120)
                 :SetPos(0, 0)
 
             teamChatInput = loveframes.Create("textinput", teamChatPanel)
-                :SetSize(200, 10)
-                :SetPos(0, 130)
+                :SetSize(200, 20)
+                :SetPos(0, 120)
+
+            teamChatInput.OnFocusGained = function(object)
+                teamTyping = true
+            end
 
         local allChatPanel = loveframes.Create("panel", hudFrame)
             :SetSize(200, 140)
             :SetPos(760, -50)
 
             allChatBox = loveframes.Create("text", allChatPanel)
-                :SetSize(200, 130)
+                :SetSize(200, 120)
                 :SetPos(0, 0)
 
             allChatInput = loveframes.Create("textinput", allChatPanel)
-                :SetSize(200, 10)
-                :SetPos(0, 130)
+                :SetSize(200, 20)
+                :SetPos(0, 120)
+
+            allChatInput.OnFocusGained = function(object)
+                allTyping = true
+            end
 end

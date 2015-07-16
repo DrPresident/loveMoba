@@ -27,9 +27,9 @@ function love.mousereleased(x, y, button)
         loveframes.mousereleased(x, y, button)
     end
 end
-
+]]
 function love.keypressed(key)
-
+--[[
     if not paused then
         loveframes.keypressed(key)
 
@@ -56,9 +56,9 @@ function love.keypressed(key)
     if key == "escape" then
         love.event.quit()
     end
---[[
 end
 
+--[[
 function love.keyreleased(key)
 
     loveframes.keyreleased(key)

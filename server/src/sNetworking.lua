@@ -7,26 +7,27 @@ function onReceive(data, clientid)
     local accept = false
     local ip, port = getIPnPort(clientid)
 
-    if port == 18025 then
 
-        if string.sub(data, 1, 4) == "tc1-" then
-            team1Chat = team1Chat .. '\n' .. string.sub(data, 5)
-            recv = recv + 1
+    if string.sub(data, 1, 4) == "tc1-" then
+        team1Chat = team1Chat .. '\n' .. string.sub(data, 5)
+        server:send("tc1" .. team1Chat)
+        recv = recv + 1
 
-        elseif string.sub(data, 1, 4) == "tc2-" then
-            team2Chat = team2Chat .. '\n' .. string.sub(data, 5)
-            recv = recv + 1
+    elseif string.sub(data, 1, 4) == "tc2-" then
+        team2Chat = team2Chat .. '\n' .. string.sub(data, 5)
+        server:send("tc2-" .. team2Chat)
+        recv = recv + 1
 
-        elseif string.sub(data, 1, 3) == "ac-" then
-            allChat = allChat .. '\n' .. string.sub(data, 4)
-            server:send("ac-" .. allChat)
-            recv = recv + 1
+    elseif string.sub(data, 1, 3) == "ac-" then
+        allChat = allChat .. '\n' .. string.sub(data, 4)
+        server:send("ac-" .. allChat)
+        recv = recv + 1
+        onDisconnect()
 
-        end
-
-        --rootData["heroes"].setAt(i, data)
-        refreshAllClients()
     end
+
+    --rootData["heroes"].setAt(i, data)
+    refreshAllClients()
 end
 
 function onConnect(clientid)
@@ -34,9 +35,7 @@ function onConnect(clientid)
     local accept = false
     local ip, port = getIPnPort(clientid)
 
-    if port == 18025 then
-
-    end
+    conn = conn + 1
 end
 
 function onDisconnect()
