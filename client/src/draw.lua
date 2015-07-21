@@ -25,6 +25,10 @@ function love.draw ()
     love.graphics.draw(tree.sprite.image, 0, 0)
 
     main().camera:unset()
+    
+    if paused then
+        love.graphics.print("PAUSED", love.graphics.getWidth() / 2 - 50, love.graphics.getHeight() / 2 - 50)
+    end
 
     --Draw GUI
     love.graphics.setColor(0,0,0)
@@ -47,7 +51,7 @@ function love.draw ()
 
     love.graphics.setColor(baseColor)
 
-    --Debug Info
+--Debug Info
 
     local spellActiveString = "active"
     local spellReadyString =  "ready"
@@ -69,7 +73,7 @@ function love.draw ()
     love.graphics.print(tostring(love.mouse.getX()), love.graphics.getWidth() - 200, 20)
     love.graphics.print(tostring(love.mouse.getY()), love.graphics.getWidth() - 200, 30)
 
-    --main()
+    --hero
     love.graphics.print("HERO DESTINATION", love.graphics.getWidth() - 200, 50)
     love.graphics.print(tostring(main().desX), love.graphics.getWidth() - 200, 60)
     love.graphics.print(tostring(main().desY), love.graphics.getWidth() - 200, 70)
@@ -82,6 +86,15 @@ function love.draw ()
     love.graphics.print(spellReadyString, love.graphics.getWidth() - 200, 120)
     love.graphics.print(spellActiveString, love.graphics.getWidth() - 200, 130)
     love.graphics.print(spellCDString, love.graphics.getWidth() - 200, 140)
+    
+    --networking
+    if connected then
+        love.graphics.print("CONNECTED", love.graphics.getWidth() - 200, 160)
+    else
+        love.graphics.print("NOT CONNECTED", love.graphics.getWidth() - 200, 160)
+    end
+    
+    love.graphics.print(love.timer.getFPS(), love.graphics.getWidth() - 200, 170)
 
     loveframes.draw()
 end

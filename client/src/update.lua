@@ -1,10 +1,17 @@
 function love.update(dt)
+        
+    if not connected then
+        --reconnect()
+    end
     
-    if not paused then
-        --Send/Recieve Packets
-        client:update(dt)
-        --client:send(bin:pack(main()))
+    --Send/Recieve Packets
+    client:update(dt)
+    --client:send(bin:pack(main()))
+    
+    --Update GUI/HUD
+    loveframes.update(dt)
 
+    if not paused then
         --Move Objects
         main():update(dt)
 
@@ -15,6 +22,5 @@ function love.update(dt)
         main().camera:update(dt)
     end
 
-    --Update GUI/HUD
-    loveframes.update(dt)
+
 end

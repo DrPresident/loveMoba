@@ -5,9 +5,6 @@ function love.load(arg)
 
     --love.window.setFullscreen(true)
 
-    --Network Setup
-    clientInit("127.0.0.1")
-
     --Map Setup
     map = love.graphics.newImage("res/environment/grass_back.png")
     initCollisions(100)
@@ -17,7 +14,13 @@ function love.load(arg)
     teamTyping = false
     allTyping = false
     shift = false
-    rootData = {}
+    connected = false
+    rootData = {} 
+    fps = 60
+    conn = 0
+    
+    --Network Setup
+    clientInit()
 
     rootData["heroes"] = {}
     rootData["creeps"] = {}
@@ -34,7 +37,6 @@ function love.load(arg)
     initGUI()
 
     --loveframes.SetState("heroselection")
-
 
     setMain(Orcus.create())
     paused = false
