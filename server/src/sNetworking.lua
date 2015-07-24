@@ -16,11 +16,17 @@ function onReceive(data, clientid)
     elseif string.sub(data, 1, 3) == "ac-" then
         allChat = allChat .. '\n' .. string.sub(data, 4)
         server:send("ac-" .. allChat)
+        
+    elseif string.sub(data, 1, 2) == "x-" then
+        main().desX = tonumber(string.sub(data, 3))
+        
+    elseif string.sub(data, 1, 2) == "y-" then
+        main().desY = tonumber(string.sub(data, 3))
+              
     end
     
     recv = recv + 1
 
-    --rootData["heroes"].setAt(i, data)
     refreshAllClients()
 end
 

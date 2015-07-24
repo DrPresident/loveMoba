@@ -1,12 +1,27 @@
 function love.update(dt)
         
-    if not connected then
-        --reconnect()
+    --update timers
+    for key, value in pairs(timers) do
+        timers[key] = timers[key] + dt
     end
     
-    --Send/Recieve Packets
+    --connecting if need be
+    if timers["conn"] > 2.0 and not connected then
+        reconnect()
+        timers["conn"] = 0.0
+    end
+    
+    if timers["push"] > .1 then
+        --client:send(main())
+        timers["push"] = 0.0
+        
+        --test data
+        client:send("x-" .. tostring(main().desX))
+        client:send("y-" .. tostring(main().desY))
+    end
+    
+    --Recieve Packets
     client:update(dt)
-    --client:send(bin:pack(main()))
     
     --Update GUI/HUD
     loveframes.update(dt)
@@ -21,6 +36,4 @@ function love.update(dt)
         --Update Cameras
         main().camera:update(dt)
     end
-
-
 end

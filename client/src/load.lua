@@ -19,6 +19,10 @@ function love.load(arg)
     fps = 60
     conn = 0
     
+    timers = {}
+    timers["conn"] = 0.0
+    timers["push"] = 0.0
+    
     --Network Setup
     clientInit()
 

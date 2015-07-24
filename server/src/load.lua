@@ -21,6 +21,10 @@ function love.load(arg)
 
     recv = 0
     conn = 0
+    
+    timers = {}
+    
+    timers["push"] = 0.0
 
     rootData["heroes"] = {}
     rootData["creeps"] = {}
