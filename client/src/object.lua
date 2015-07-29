@@ -2,8 +2,8 @@ Object =
 {
     stationary,
     sprite,
-    x = 50,
-    y = 50,
+    x = 100,
+    y = 100,
     desX = 100,
     desY = 100,
     speed,
@@ -16,6 +16,7 @@ Object.__index = Object
 function Object:create()
     object = {}
     setmetatable(object, Object)
+    
     return object
 end
 
@@ -28,6 +29,8 @@ function Object:Y()
 end
 
 function Object:move(dt)
+
+    self.col:moveTo(self:X(), self:Y())
 
     local snapRange = 5
     local distX = math.abs(self:X() - self.desX)

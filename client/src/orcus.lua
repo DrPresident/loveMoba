@@ -13,8 +13,6 @@ function Orcus:create()
 
     orcus:loadSprite("res/orcus/sprite.png", .1)
 
-    --col = Collider:addRectangle(orcus.x, orcus.y, 5, 5)
-
     --Fireball Setup
     orcus.spells[1] = Spell:create(point, orcus.fireBall, "res/orcus/fireBall.png", 4, 3, .1)
     orcus.spells[1].frontAnim = anim8.newAnimation(
@@ -31,8 +29,9 @@ function Orcus:create()
     orcus.spells[1].speed = 300
     orcus.spells[1].cooldown = 5
     orcus.spells[1].cost = 35
-
-
+    
+    orcus.col = Collider:addRectangle(orcus.x, orcus.y, 97 / 3, 128 / 4)
+    orcus.col.object = orcus
 
     return orcus
 end

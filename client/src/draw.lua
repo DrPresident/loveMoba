@@ -53,6 +53,9 @@ function love.draw ()
 
 --Debug Info
 
+    main().col:draw("fill")
+    testCol:draw("fill")
+    
     local spellActiveString = "active"
     local spellReadyString =  "ready"
     local spellCDString =     "CD   "
@@ -94,7 +97,8 @@ function love.draw ()
         love.graphics.print("NOT CONNECTED", love.graphics.getWidth() - 200, 160)
     end
     
-    love.graphics.print(love.timer.getFPS(), love.graphics.getWidth() - 200, 170)
+    love.graphics.print("FPS - " .. love.timer.getFPS(), love.graphics.getWidth() - 200, 170)
+    love.graphics.print("col - " .. tostring(colliding), love.graphics.getWidth() - 200, 180)
 
     loveframes.draw()
 end

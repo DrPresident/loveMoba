@@ -34,7 +34,7 @@ function love.load(arg)
     mainHero = 1
     for i = 1, 10 do
         if i == mainHero then
-            rootData["heroes"]["main"] = Orcus:create()
+            rootData["heroes"][mainHero] = Orcus:create()
         end
     end
 

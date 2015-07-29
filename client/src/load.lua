@@ -45,5 +45,7 @@ function love.load(arg)
     setMain(Orcus.create())
     paused = false
     loveframes.SetState("game")
+    
+    testCol = Collider:addRectangle(300, 300, 100, 100)
 
 end

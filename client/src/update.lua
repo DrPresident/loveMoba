@@ -36,4 +36,5 @@ function love.update(dt)
         --Update Cameras
         main().camera:update(dt)
     end
+    
 end
